@@ -35,21 +35,21 @@ void TulisIsiTab (TabInt T){
     } else {
         printf("[");
         for (i = GetFirstIdx(T); i <= (GetLastIdx(T) - 1); i++){
-            printf("%s,",Elmt(T,i));
+            printf("%s,",ArrayElmt(T,i));
         }
-        printf("%s]\n",Elmt(T,GetLastIdx(T)));
+        printf("%s]\n",ArrayElmt(T,GetLastIdx(T)));
     }
 }
 
-IdxType Search (TabInt T, ElType X){
+IdxType Search (TabInt T, ArrayElType X){
     IdxType i;
 
     if (!IsEmpty(T)){
         i = GetFirstIdx(T);
-        while ((i < GetLastIdx(T)) && (strcmp(Elmt(T,i),X) != 0)){
+        while ((i < GetLastIdx(T)) && (strcmp(ArrayElmt(T,i),X) != 0)){
             i = i + 1;
         } //i = GetLastIdx(T) atau T[i] = X
-        if (strcmp(Elmt(T,i),X) == 0){
+        if (strcmp(ArrayElmt(T,i),X) == 0){
             return i;
         } else {
             return IdxUndef;
@@ -59,22 +59,20 @@ IdxType Search (TabInt T, ElType X){
     }
 }
 
-void AddElUnik(TabInt *T, ElType X){
+void AddElUnik(TabInt *T, ArrayElType X){
     IdxType i;
 
     if (!IsFull(*T)){
         if (Search(*T,X) == IdxUndef){
-            strcpy(Elmt(*T,GetLastIdx(*T)+1),X);
+            strcpy(ArrayElmt(*T,GetLastIdx(*T)+1),X);
             Neff(*T) += 1;
-        } else {
-            printf("Nama sudah ada\n");
         }
     }
 }
 
-void AmbilData(TabInt *T){
+void AmbilDataArray(TabInt *T){
     FILE *pFile;
-    ElType X;
+    ArrayElType X;
 
     pFile = fopen("DaftarPemain.txt","r");
     while(!feof(pFile)){
@@ -84,14 +82,14 @@ void AmbilData(TabInt *T){
     fclose(pFile);
 }
 
-void UploadData(TabInt *T){
+void UploadDataArray(TabInt *T){
     FILE *pFile;
-    ElType X;
+    ArrayElType X;
     IdxType i;
 
     pFile = fopen("DaftarPemain.txt","w");
     for (i = GetFirstIdx(*T); i <= GetLastIdx(*T); i++){
-        fprintf(pFile,"%s\n",Elmt(*T,i));
+        fprintf(pFile,"%s\n",ArrayElmt(*T,i));
     }
 
     fclose(pFile);
