@@ -76,7 +76,7 @@ void SalinKata()
           Jika panjang kata melebihi NMax, maka sisa kata "dipotong" */
 {  
 	/* Kamus Lokal */
-	int i = 1; /* inisialisasi */
+	int i = 0; /* inisialisasi */
 	/* Algoritma*/
 	for (;;) 
 	{
@@ -88,6 +88,7 @@ void SalinKata()
 		}
 		if ((CC == MARK) || (CC == BLANK)) 
 		{
+			CKata.TabKata[i+1] = '\0';
 			break;
 		} 
 		else 
@@ -95,5 +96,6 @@ void SalinKata()
 			i++; 
 		}
 	} /* CC = MARK or CC = BLANK */
-	CKata.Length = i;
+	CKata.Length = i+1;
 }
+
