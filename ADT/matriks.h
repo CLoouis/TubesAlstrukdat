@@ -5,20 +5,7 @@
 
 #include "boolean.h"
 #include "point.h"
-
-/* Ukuran minimum dan maksimum baris dan kolom */
-#define BrsMin 1
-#define BrsMax 10
-#define KolMin 1
-#define KolMax 10
-
-typedef int indeks; /* indeks baris, kolom */
-typedef char MatriksElType;
-typedef struct {
-	MatriksElType Mem[BrsMax+1][KolMax+1];
-    int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
-	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
-} MATRIKS;
+#include "tipebentukan.h"
 /* NBrsEff <= 1 dan NKolEff <= 1 */
 /* Indeks matriks yang digunakan: [BrsMin..BrsMax][KolMin..KolMax] */
 /* Memori matriks yang dipakai selalu di "ujung kiri atas" */
@@ -31,9 +18,6 @@ void MakeMATRIKS (int NB, int NK, MATRIKS * M);
 /* F.S. Matriks M sesuai dengan definisi di atas terbentuk */
 
 /* *** Selektor *** */
-#define NBrsEff(M) (M).NBrsEff
-#define NKolEff(M) (M).NKolEff
-#define MatriksElmt(M,i,j) (M).Mem[(i)][(j)]
 /* *** Selektor: Untuk sebuah matriks M yang terdefinisi: *** */
 indeks GetFirstIdxBrs (MATRIKS M);
 /* Mengirimkan indeks baris terkecil M */

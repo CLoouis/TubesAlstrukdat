@@ -1,5 +1,6 @@
 #include "boolean.h"
 #include "array.h"
+#include "tipebentukan.h"
 #include <stdio.h>
 #include <string.h>
 
@@ -74,7 +75,7 @@ void AmbilDataArray(TabInt *T){
     FILE *pFile;
     ArrayElType X;
 
-    pFile = fopen("DaftarPemain.txt","r");
+    pFile = fopen("File/DaftarPemain.txt","r");
     while(!feof(pFile)){
         fscanf(pFile,"%s",X);
         AddElUnik(T,X);
@@ -87,7 +88,7 @@ void UploadDataArray(TabInt *T){
     ArrayElType X;
     IdxType i;
 
-    pFile = fopen("DaftarPemain.txt","w");
+    pFile = fopen("File/DaftarPemain.txt","w");
     for (i = GetFirstIdx(*T); i <= GetLastIdx(*T); i++){
         fprintf(pFile,"%s\n",ArrayElmt(*T,i));
     }

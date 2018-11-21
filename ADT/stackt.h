@@ -8,16 +8,16 @@
 #include "boolean.h"
 #include <string.h>
 
-#define IdxMax 10
+#define IdxStackMax 10
 #define Nil 0
 #define MaxEl 10
 /* Nil adalah stack dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
-typedef char Kata[10];
-typedef Kata infotype;
+typedef char StackKata[10];
+typedef StackKata infotype;
 typedef int address;   /* indeks tabel */
 typedef struct {
-	infotype TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
+	infotype TI[IdxStackMax+1]; /* memori tempat penyimpan elemen (container) */
     address Top;
 } Stack;
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */

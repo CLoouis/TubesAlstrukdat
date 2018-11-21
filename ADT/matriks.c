@@ -7,6 +7,7 @@ Tanggal : 16 Sept 2018
 #include "boolean.h"
 #include "matriks.h"
 #include "point.h"
+#include "tipebentukan.h"
 #include <stdio.h>
 
 /* ********** DEFINISI PROTOTIPE PRIMITIF ********** */

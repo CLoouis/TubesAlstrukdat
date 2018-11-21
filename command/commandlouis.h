@@ -1,6 +1,8 @@
-#include "array.h"
-#include "point.h"
-#include "matriks.h"
+#include "../ADT/array.h"
+#include "../ADT/point.h"
+#include "../ADT/matriks.h"
+#include "../ADT/stackt.h"
+#include "../ADT/tipebentukan.h"
 
 #ifndef COMMANDLOUIS_H
 #define COMMANDLOUIS_H
@@ -11,15 +13,16 @@ void tampilanAwal();
 //Menampilkan tampilan awal game
 void menu(int *X);
 //Menampilkan menu awal
-void newGame(TabInt *User, Kata *nama);
+void newGame(TabInt *User, KataArray *nama);
 
-void loadGame(TabInt User, Kata *nama, int *indexUser);
+void loadGame(TabInt User, KataArray *nama, int *indexUser);
 
-void GoUp(POINT P, MATRIKS *M);
+void GoUp(Player *P, MATRIKS *M);
 
-void GoDown(POINT P, MATRIKS *M);
+void GoDown(Player *P, MATRIKS *M);
 
-void GoLeft(POINT P, MATRIKS *M);
+void GoLeft(Player *P, MATRIKS *M);
 
-void GoRight(POINT P, MATRIKS *M);
+void GoRight(Player *P, MATRIKS *M);
+
 #endif

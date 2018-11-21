@@ -1,8 +1,11 @@
 #include "commandlouis.h"
-#include "array.h"
-#include "point.h"
-#include "matriks.h"
+#include "../ADT/array.h"
+#include "../ADT/point.h"
+#include "../ADT/matriks.h"
+#include "../ADT/stackt.h"
+#include "../ADT/tipebentukan.h"
 #include <stdio.h>
+
 
 void Recipe(){
     //Menampilkan pohon resep kepada pengguna
@@ -50,7 +53,7 @@ void menu(int *X){
     scanf("%d",&*X);
 }
 
-void newGame(TabInt *User, Kata *nama){
+void newGame(TabInt *User, KataArray *nama){
     printf("Masukan nama Anda :\n");
     printf(">> ");
     scanf("%s",nama);
@@ -63,7 +66,7 @@ void newGame(TabInt *User, Kata *nama){
     UploadDataArray(User);
 }
 
-void loadGame(TabInt User, Kata *nama, int *indexUser){
+void loadGame(TabInt User, KataArray *nama, int *indexUser){
     TulisIsiTab(User);
     printf("Siapa Anda : \n");
     printf(">> ");
@@ -79,58 +82,58 @@ void loadGame(TabInt User, Kata *nama, int *indexUser){
     printf("Anda memilih slot %d\n\n",*indexUser);
 }
 
-void GoUp(POINT P, MATRIKS *M){
-    P = SearchPosisiP(*M);
+void GoUp(Player *P, MATRIKS *M){
+    Posisi(*P) = SearchPosisiP(*M);
 
-    if (Absis(P) == 1){
+    if (Absis(Posisi(*P)) == 1){
         printf("Mentok Bos\n");
-    } else if (MatriksElmt(*M,Absis(P) - 1,Ordinat(P)) != '-'){
+    } else if (MatriksElmt(*M,Absis(Posisi(*P)) - 1,Ordinat(Posisi(*P))) != '-'){
         printf("Nabrak Bos\n");
     } else {
-        MatriksElmt(*M,Absis(P) -1,Ordinat(P)) = 'P';
-        MatriksElmt(*M,Absis(P),Ordinat(P)) = '-';
-        Absis(P) -= 1;
+        MatriksElmt(*M,Absis(Posisi(*P)) -1,Ordinat(Posisi(*P))) = 'P';
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P))) = '-';
+        Absis(Posisi(*P)) -= 1;
     }
 }
 
-void GoDown(POINT P, MATRIKS *M){
-    P = SearchPosisiP(*M);
+void GoDown(Player *P, MATRIKS *M){
+    Posisi(*P) = SearchPosisiP(*M);
 
-    if (Absis(P) == 8){
+    if (Absis(Posisi(*P)) == 8){
         printf("Mentok Bos\n");
-    } else if (MatriksElmt(*M,Absis(P) + 1,Ordinat(P)) != '-'){
+    } else if (MatriksElmt(*M,Absis(Posisi(*P)) + 1,Ordinat(Posisi(*P))) != '-'){
         printf("Nabrak Bos\n");
     } else {
-        MatriksElmt(*M,Absis(P) + 1,Ordinat(P)) = 'P';
-        MatriksElmt(*M,Absis(P),Ordinat(P)) = '-';
-        Absis(P) += 1;
+        MatriksElmt(*M,Absis(Posisi(*P)) + 1,Ordinat(Posisi(*P))) = 'P';
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P))) = '-';
+        Absis(Posisi(*P)) += 1;
     }
 }
 
-void GoLeft(POINT P, MATRIKS *M){
-    P = SearchPosisiP(*M);
+void GoLeft(Player *P, MATRIKS *M){
+    Posisi(*P) = SearchPosisiP(*M);
 
-    if (Ordinat(P) == 1){
+    if (Ordinat(Posisi(*P)) == 1){
         printf("Mentok Bos\n");
-    } else if (MatriksElmt(*M,Absis(P),Ordinat(P) - 1) != '-'){
+    } else if (MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P)) - 1) != '-'){
         printf("Nabrak Bos\n");
     } else {
-        MatriksElmt(*M,Absis(P),Ordinat(P) - 1) = 'P';
-        MatriksElmt(*M,Absis(P),Ordinat(P)) = '-';
-        Ordinat(P) -= 1;
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P)) - 1) = 'P';
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P))) = '-';
+        Ordinat(Posisi(*P)) -= 1;
     }
 }
 
-void GoRight(POINT P, MATRIKS *M){
-    P = SearchPosisiP(*M);
+void GoRight(Player *P, MATRIKS *M){
+    Posisi(*P) = SearchPosisiP(*M);
 
-    if (Ordinat(P) == 8){
+    if (Ordinat(Posisi(*P)) == 8){
         printf("Mentok Bos\n");
-    } else if (MatriksElmt(*M,Absis(P),Ordinat(P) + 1) != '-'){
+    } else if (MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P)) + 1) != '-'){
         printf("Nabrak Bos\n");
     } else {
-        MatriksElmt(*M,Absis(P),Ordinat(P) + 1) = 'P';
-        MatriksElmt(*M,Absis(P),Ordinat(P)) = '-';
-        Ordinat(P) += 1;
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P)) + 1) = 'P';
+        MatriksElmt(*M,Absis(Posisi(*P)),Ordinat(Posisi(*P))) = '-';
+        Ordinat(Posisi(*P)) += 1;
     }
 }

@@ -1,10 +1,11 @@
 /* NIM/Nama  : 13517072/Kevin Nathaniel Wijaya
    Nama file : jam.c
    Topik     : Tugas Pra Praktikum 02
-   Tanggal   : 5 September 2018 
+   Tanggal   : 5 September 2018
    Deskripsi : File Body ADT Jam              */
 
 #include "jam.h"
+#include "tipebentukan.h"
 #include<stdio.h>
 
 /* ***************************************************************** */
@@ -49,7 +50,7 @@ void BacaJAM (JAM * J)
    dalam satu baris, masing-masing dipisahkan 1 spasi, diakhiri enter. */
 /* Jika JAM tidak valid maka diberikan pesan: "Jam tidak valid", dan pembacaan
    diulangi hingga didapatkan jam yang valid. */
-/* Contoh: 
+/* Contoh:
    60 3 4
    Jam tidak valid
    1 3 4
@@ -65,18 +66,18 @@ void BacaJAM (JAM * J)
 		scanf("%d %d %d", &a, &b, &c);
 	}
 	*J = MakeJAM(a,b,c);
-}   
+}
 
 void TulisJAM (JAM J)
 /* I.S. : J sembarang */
 /* F.S. : Nilai J ditulis dg format HH:MM:SS */
 /* Proses : menulis nilai setiap komponen J ke layar dalam format HH:MM:SS
-   tanpa karakter apa pun di depan atau belakangnya, termasuk spasi, enter, dll.*/ 
+   tanpa karakter apa pun di depan atau belakangnya, termasuk spasi, enter, dll.*/
 {
 	/* KAMUS */
 	/* ALGORITMA */
 	printf("%d:%d:%d", Hour(J), Minute(J), Second(J));
-}  
+}
 
 
 /* ***************************************************************** */
@@ -90,12 +91,12 @@ long JAMToDetik (JAM J)
 	/* KAMUS */
 	/* ALGORITMA */
 	return ((Hour(J) * 3600) + (Minute(J) * 60) + Second(J));
-}  
+}
 
 JAM DetikToJAM (long N)
 /* Mengirim  konversi detik ke JAM */
-/* Catatan: Jika N >= 86400, maka harus dikonversi dulu menjadi jumlah detik yang 
-   mewakili jumlah detik yang mungkin dalam 1 hari, yaitu dengan rumus: 
+/* Catatan: Jika N >= 86400, maka harus dikonversi dulu menjadi jumlah detik yang
+   mewakili jumlah detik yang mungkin dalam 1 hari, yaitu dengan rumus:
    N1 = N mod 86400, baru N1 dikonversi menjadi JAM */
 {
 	/* KAMUS */
