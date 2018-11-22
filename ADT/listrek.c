@@ -1,17 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "listrek.h"
 
 /* *** Manajemen Memori *** */
-address Alokasi (infotype X){
+address Alokasi (Kata X){
     address P;
 
-    P = (address) malloc(sizeof(ElmtList));
+    P = (address) malloc(sizeof(Kata));
     if(P==Nil){
         return(Nil);
     }
     else{
-        Info(P) = X;
+        strcpy(Info(P),X);
         Next(P) = Nil;
         return(P);
     }
@@ -52,9 +53,9 @@ int IsOneElmt(List L){
 /* Mengirimkan 1 jika L berisi 1 elemen dan 0 jika > 1 elemen atau kosong */
 
 /* *** Selektor *** */
-infotype FirstElmt (List L){
-    return(Info(L));
-}
+// Kata FirstElmt (List L){
+//     return(Info(L));
+// }
 /* Mengirimkan elemen pertama sebuah list L yang tidak kosong */
 List TailList(List L){
     return(Next(L));
@@ -62,7 +63,7 @@ List TailList(List L){
 /* Mengirimkan list L tanpa elemen pertamanya, mungkin menjadi list kosong */
 
 /* *** Konstruktor *** */
-List Konso(infotype e, List L){
+List Konso(Kata e, List L){
     address P;
     
     P = Alokasi(e);
@@ -77,7 +78,7 @@ List Konso(infotype e, List L){
 /* Mengirimkan list L dengan tambahan e sebagai elemen pertamanya. 
 e dialokasi terlebih dahulu. Jika alokasi gagal, mengirimkan L. */
 
-List KonsB(List L, infotype e){
+List KonsB(List L, Kata e){
     if(IsEmpty(L)){
         return (Alokasi(e));
     }
@@ -110,7 +111,7 @@ void MCopy (List Lin, List *Lout){
     }
     else{
         MCopy(TailList(Lin),&Ltemp);
-        *Lout = Konso(FirstElmt(Lin),Ltemp);
+        *Lout = Konso(Info(Lin),Ltemp);
     }
 }
 /* I.S. Lin terdefinisi */
@@ -122,7 +123,7 @@ List Concat (List L1, List L2){
         return(Copy(L2));
     }
     else{
-        return(Konso(FirstElmt(L1),Concat(TailList(L1),L2)));
+        return(Konso(Info(L1),Concat(TailList(L1),L2)));
     }
 }
 /* Mengirimkan salinan hasil konkatenasi list L1 dan L2 (menjadi list baru) */
@@ -141,7 +142,7 @@ void PrintList (List L){
         //printf("\n");
     }
     else{
-        printf("%d\n",Info(L));
+        printf("%s\n",Info(L));
         PrintList(TailList(L));
     }
 }
@@ -158,12 +159,12 @@ int NbElmtList (List L){
 }
 /* Mengirimkan banyaknya elemen list L, Nol jika L kosong */
 
-boolean Search (List L, infotype X){
+boolean Search (List L, Kata X){
     if(IsEmpty(L)){
         return(false);
     }
     else{
-        if(Info(L) == X){
+        if(strcmp(Info(L),X) == 0){
             return(true);
         }
         else{

@@ -101,10 +101,10 @@ typedef struct {
 #define Nil NULL
 
 /* Definisi Type */
-typedef int infotype;
+// typedef int infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist { 
-	infotype info;
+	Kata info;
 	address next;
 } ElmtList;
 
@@ -159,7 +159,7 @@ typedef struct {
 typedef struct tNode *addrNode;
 typedef struct tNode
 {
-  infotype info;
+  Kata info;
   addrNode left;
   addrNode right;
 } Node;

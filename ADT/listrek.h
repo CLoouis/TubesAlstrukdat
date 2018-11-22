@@ -10,7 +10,7 @@
 
 
 /* *** Manajemen Memori *** */
-address Alokasi (infotype X);
+address Alokasi (Kata X);
 /* Mengirimkan address hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka address tidak Nil, dan misalnya menghasilkan P, 
   maka Info(P) = X, Next(P) = Nil */
@@ -29,16 +29,16 @@ int IsOneElmt(List L);
 /* Mengirimkan 1 jika L berisi 1 elemen dan 0 jika > 1 elemen atau kosong */
 
 /* *** Selektor *** */
-infotype FirstElmt (List L);
+// Kata FirstElmt (List L);
 /* Mengirimkan elemen pertama sebuah list L yang tidak kosong */
 List TailList(List L);
 /* Mengirimkan list L tanpa elemen pertamanya, mungkin menjadi list kosong */
 
 /* *** Konstruktor *** */
-List Konso(infotype e, List L);
+List Konso(Kata e, List L);
 /* Mengirimkan list L dengan tambahan e sebagai elemen pertamanya. 
 e dialokasi terlebih dahulu. Jika alokasi gagal, mengirimkan L. */
-List KonsB(List L, infotype e);
+List KonsB(List L, Kata e);
 /* Mengirimkan list L dengan tambahan e sebagai elemen pertamanya */
 /* e harus dialokasi terlebih dahulu */
 /* Jika alokasi e gagal, mengirimkan L */ 
@@ -63,7 +63,7 @@ void PrintList (List L);
 /* F.S. Setiap elemen list dicetak. */
 int NbElmtList (List L);
 /* Mengirimkan banyaknya elemen list L, Nol jika L kosong */
-boolean Search (List L, infotype X);
+boolean Search (List L, Kata X);
 /* Mengirim true jika X adalah anggota list, false jika tidak */
 
 #endif
