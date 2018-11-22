@@ -107,7 +107,6 @@ int NBElmt (MATRIKS M){
 
 void AmbilDataMatriks (MATRIKS *M){
 	FILE *pFile;
-	MatriksElType X;
 	char Kata[100];
 	int i,j;
 

@@ -96,7 +96,7 @@ void Place(Player P, Customer C, Queue Q){
 
 
 void CH(Player *P){
-    infotype temp;
+    Kata temp;
 
     while(!IsStackEmpty(Hand(*P))){
         Pop(&Hand(*P),temp);

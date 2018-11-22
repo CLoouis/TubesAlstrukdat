@@ -10,8 +10,6 @@
 #include "tipebentukan.h"
 // #include "boas.h"
 
-#define Nil 0
-/* Konstanta untuk mendefinisikan address tak terdefinisi */
 
 
 /* Definisi elemen dan address */

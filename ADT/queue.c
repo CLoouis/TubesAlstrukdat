@@ -16,7 +16,7 @@
 boolean IsQueueEmpty (Queue Q)
 /* Mengirim true jika Q kosong: lihat definisi di atas */
 {
-	return ((Head(Q) == Nil) && (Tail(Q) == Nil));
+	return ((Head(Q) == NilQ) && (Tail(Q) == NilQ));
 }
 
 boolean IsQueueFull (Queue Q)
@@ -53,8 +53,8 @@ void CreateEmpty (Queue * Q, int Max)
 	(*Q).T = (infotypeCust *) malloc ((Max+1) * sizeof(infotypeCust)); 
 	if ((*Q).T != NULL) {
 		MaxElQueue(*Q) = Max;
-		Head(*Q) = Nil;
-		Tail(*Q) = Nil;
+		Head(*Q) = NilQ;
+		Tail(*Q) = NilQ;
 	} else /* alokasi gagal */ {
 		MaxElQueue(*Q) = 0;
 	}
@@ -104,8 +104,8 @@ void Del (Queue * Q, infotypeCust * X)
 	/* Algoritma */
 	*X = InfoHead(*Q);
 	if (Head(*Q) == Tail(*Q)) { /* Set mjd queue kosong */
-		Head(*Q) = Nil; 
-		Tail(*Q) = Nil; 
+		Head(*Q) = NilQ; 
+		Tail(*Q) = NilQ; 
 	}
 	else if (Head(*Q) == MaxElQueue(*Q)) {
 		Head(*Q) = 1;

@@ -56,7 +56,7 @@ infotype FirstElmt (List L){
     return(Info(L));
 }
 /* Mengirimkan elemen pertama sebuah list L yang tidak kosong */
-List Tail(List L){
+List TailList(List L){
     return(Next(L));
 }
 /* Mengirimkan list L tanpa elemen pertamanya, mungkin menjadi list kosong */
@@ -82,7 +82,7 @@ List KonsB(List L, infotype e){
         return (Alokasi(e));
     }
     else{
-        Next(L) = KonsB(Tail(L),e);
+        Next(L) = KonsB(TailList(L),e);
     }
     return L;
 }
@@ -92,12 +92,11 @@ List KonsB(List L, infotype e){
 
 /* *** Operasi Lain *** */
 List Copy (List L){
-    List hasil;
     if(IsEmpty(L)){
         return(Nil);
     }
     else{
-        return(Konso(Info(L),Copy(Tail(L))));
+        return(Konso(Info(L),Copy(TailList(L))));
     }
 }
 /* Mengirimkan salinan list L (menjadi list baru) */
@@ -110,7 +109,7 @@ void MCopy (List Lin, List *Lout){
         *Lout = Nil;
     }
     else{
-        MCopy(Tail(Lin),&Ltemp);
+        MCopy(TailList(Lin),&Ltemp);
         *Lout = Konso(FirstElmt(Lin),Ltemp);
     }
 }
@@ -123,7 +122,7 @@ List Concat (List L1, List L2){
         return(Copy(L2));
     }
     else{
-        return(Konso(FirstElmt(L1),Concat(Tail(L1),L2)));
+        return(Konso(FirstElmt(L1),Concat(TailList(L1),L2)));
     }
 }
 /* Mengirimkan salinan hasil konkatenasi list L1 dan L2 (menjadi list baru) */
@@ -143,7 +142,7 @@ void PrintList (List L){
     }
     else{
         printf("%d\n",Info(L));
-        PrintList(Tail(L));
+        PrintList(TailList(L));
     }
 }
 /* I.S. L terdefinisi. */
@@ -154,7 +153,7 @@ int NbElmtList (List L){
         return 0;
     }
     else{
-        return (1+NbElmtList(Tail(L)));
+        return (1+NbElmtList(TailList(L)));
     }
 }
 /* Mengirimkan banyaknya elemen list L, Nol jika L kosong */
@@ -168,7 +167,7 @@ boolean Search (List L, infotype X){
             return(true);
         }
         else{
-            return(Search(Tail(L),X));
+            return(Search(TailList(L),X));
         }
     }
 }

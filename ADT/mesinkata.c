@@ -8,9 +8,9 @@
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
 #include "mesinkata.h"
+#include "tipebentukan.h"
 
-boolean EndKata;
-Kata CKata;
+extern boolean EndKata;
 
 void IgnoreBlank()
 /* Mengabaikan satu atau beberapa BLANK
