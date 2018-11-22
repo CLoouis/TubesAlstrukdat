@@ -2,8 +2,10 @@
 #include <string.h>
 #include "../ADT/mesinkata.h"
 #include "../ADT/boolean.h"
+#include "SaveLoad.h"
 
-int main(){
+
+void Load(){
     typedef char peta[9][9];
     peta ruang[5];
     int i,j;
@@ -169,5 +171,4 @@ int main(){
         }
         printf("\n");
     }
-    return 0;
 }
