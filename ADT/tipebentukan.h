@@ -39,7 +39,7 @@ typedef struct{
     int qpatience;// patience di queue
     Kata order;
     boolean isi; // apakah si customer sudah pergi atau belum 
-} Customer;
+}Customer;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -65,7 +65,7 @@ typedef struct {
 	Stack FoodStack; /* tabel penyimpan elemen */
 	Stack Hand;  /* alamat TOP: elemen puncak */
     POINT Posisi; // posisi kolomg
-    int room; // ruang mana, 4 kitchen
+    int room; // ruang mana
 } Player;
 #define FoodStack(P) (P).FoodStack
 #define Hand(P) (P).Hand
@@ -74,18 +74,30 @@ typedef struct {
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
-//-------------------------------------------------------MESINKATA-----------------------------------------------------------------------
-#define NMax 50
-#define BLANK ' '
+//----------------------------------------------------------LISTREK------------------------------------------------------------------
+#define Nil NULL
 
-typedef struct {
-	char TabKata[NMax+1]; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
-    int Length;
-} KataMesin;
+/* Definisi Type */
+//typedef int infotype;
+typedef struct tElmtlist *address;
+typedef struct tElmtlist { 
+	infotype info;
+	address next;
+} ElmtList;
 
-/* State Mesin Kata */
-extern boolean EndKata;
-extern KataMesin CKata;
+/* Definisi list : */
+/* List kosong : L = Nil */
+typedef address List;
+
+/* Deklarasi  nama untuk variabel kerja */ 
+/*  	L : List */
+/*  	P : address 	*/
+/* Maka penulisan First(L) menjadi L */
+/*                P.info menjadi Info(P); P.next menjadi Next(P) */
+
+/* Selektor */
+#define Info(P) (P)->info
+#define Next(P) (P)->next
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
