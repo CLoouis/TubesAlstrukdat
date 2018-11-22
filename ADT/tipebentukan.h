@@ -39,7 +39,7 @@ typedef struct{
     int qpatience;// patience di queue
     Kata order;
     boolean isi; // apakah si customer sudah pergi atau belum 
-}Customer;
+} Customer;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -65,12 +65,27 @@ typedef struct {
 	Stack FoodStack; /* tabel penyimpan elemen */
 	Stack Hand;  /* alamat TOP: elemen puncak */
     POINT Posisi; // posisi kolomg
-    int room; // ruang mana
+    int room; // ruang mana, 4 kitchen
 } Player;
 #define FoodStack(P) (P).FoodStack
 #define Hand(P) (P).Hand
 #define Posisi(P) (P).Posisi
 #define Room(P) (P).room
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------MESINKATA-----------------------------------------------------------------------
+#define NMax 50
+#define BLANK ' '
+
+typedef struct {
+	char TabKata[NMax+1]; /* container penyimpan kata, indeks yang dipakai [1..NMax] */
+    int Length;
+} KataMesin;
+
+/* State Mesin Kata */
+extern boolean EndKata;
+extern KataMesin CKata;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 

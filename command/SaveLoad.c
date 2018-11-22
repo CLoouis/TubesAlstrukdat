@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <string.h>
+#include "../ADT/tipebentukan.h"
 #include "../ADT/mesinkata.h"
 #include "../ADT/boolean.h"
 #include "SaveLoad.h"

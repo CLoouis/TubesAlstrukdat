@@ -1,5 +1,11 @@
 Name 
 Louis 
+
+Position
+5,3
+
+Room
+4
  
 Money 
 500 
@@ -10,6 +16,36 @@ Life
 Time 
 50 
  
+Room1 
+- C - - - - - - 
+C G C - - C H C 
+- C - - - - - - 
+- - - - - - - - 
+- - - - - - - - 
+- X - - - - - - 
+X I X - - X J X 
+- X - - - - - - 
+ 
+Room2 
+- C - - - - - - 
+- K - - - C L C 
+- C - - - - - - 
+- - - - - - - - 
+- - - - - - - - 
+- X - - - - - - 
+X M X - - X N X 
+- X - - - - - - 
+ 
+Room3 
+- C - - - - - - 
+- O - - - C P C 
+- C - - - - - - 
+- - - - - - - - 
+- - - - - - - - 
+- X - - - - - - 
+X Q X - - X R X 
+- X - - - - - - 
+
 Kitchen 
 M - - - - - - T 
 M - - - - - - - 
@@ -19,49 +55,18 @@ M - - M M - - -
 M - - - - - - - 
 M - - - - - - - 
 M - - M M M M M 
- 
-Room1 
-- C - - - - - - 
-C 1 C - - C 2 C 
-- C - - - - - - 
-- - - - - - - - 
-- - - - - - - - 
-- X - - - - - - 
-X 3 X - - X 4 X 
-- X - - - - - - 
- 
-Room2 
-- C - - - - - - 
-C 1 C - - C 2 C 
-- C - - - - - - 
-- - - - - - - - 
-- - - - - - - - 
-- X - - - - - - 
-X 3 X - - X 4 X 
-- X - - - - - - 
- 
-Room3 
-- C - - - - - - 
-C 1 C - - C 2 C 
-- C - - - - - - 
-- - - - - - - - 
-- - - - - - - - 
-- X - - - - - - 
-X 3 X - - X 4 X 
-- X - - - - - - 
 
 Waiting Cust
-2
+jumlah, patience, qpatience, order, isi
 
 Order
-Burger, 2
+orderan, meja
 
 Food Stack
 Burger
 
 Hand
-Garpu
-Piring
+Garpu, Piring
 
 
 
