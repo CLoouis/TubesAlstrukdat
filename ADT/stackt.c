@@ -15,8 +15,8 @@
 /* *** Konstruktor/Kreator *** */
 void CreateStackEmpty (Stack *S)
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
+/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStackt */
+/* jadi indeksnya antara 1.. MaxElStackt+1 karena 0 tidak dipakai */
 /* Ciri stack kosong : TOP bernilai Nil */
 {
 	Top(*S) = Nil;
@@ -32,7 +32,7 @@ boolean IsStackEmpty (Stack S)
 boolean IsFull (Stack S)
 /* Mengirim true jika tabel penampung nilai elemen stack penuh */
 {
-	return (Top(S) == MaxEl);
+	return (Top(S) == MaxElStackt);
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
@@ -47,12 +47,12 @@ void Push (Stack * S, infotype X)
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, infotype** X)
+void Pop (Stack * S, infotype X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */
 {
 	//**X = InfoTop(*S);
-	strcpy(**X,InfoTop(*S));
+	strcpy(X,InfoTop(*S));
 	Top(*S)--;
 }

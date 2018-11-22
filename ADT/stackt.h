@@ -7,38 +7,27 @@
 
 #include "boolean.h"
 #include <string.h>
+#include "tipebentukan.h"
 
-#define IdxStackMax 10
-#define Nil 0
-#define MaxEl 10
-/* Nil adalah stack dengan elemen kosong . */
-/* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
-typedef char StackKata[10];
-typedef StackKata infotype;
-typedef int address;   /* indeks tabel */
-typedef struct {
-	infotype TI[IdxStackMax+1]; /* memori tempat penyimpan elemen (container) */
-    address Top;
-} Stack;
+
 /* Contoh deklarasi variabel bertype stack dengan ciri TOP : */
 /* Versi I : dengan menyimpan tabel dan alamat top secara eksplisit*/
 
 /* Definisi stack S kosong : S.TOP = Nil */
-/* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxEl] */
+/* Elemen yang dipakai menyimpan nilai Stack T[1]..T[MaxElStackt] */
 /* Jika S adalah Stack maka akses elemen : */
    /* S.T[(S.TOP)] untuk mengakses elemen TOP */
    /* S.TOP adalah alamat elemen TOP */
 
 /* Definisi akses dengan Selektor : Set dan Get */
-#define Top(S) (S).Top
-#define InfoTop(S) (S).TI[(S).Top]
+
 
 /* ************ Prototype ************ */
 /* *** Konstruktor/Kreator *** */
 void CreateStackEmpty (Stack *S);
 /* I.S. sembarang; */
-/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxEl */
-/* jadi indeksnya antara 1.. MaxEl+1 karena 0 tidak dipakai */
+/* F.S. Membuat sebuah stack S yang kosong berkapasitas MaxElStackt */
+/* jadi indeksnya antara 1.. MaxElStackt+1 karena 0 tidak dipakai */
 /* Ciri stack kosong : TOP bernilai Nil */
 
 /* ************ Predikat Untuk test keadaan KOLEKSI ************ */
@@ -54,7 +43,7 @@ void Push (Stack * S, infotype X);
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, infotype** X);
+void Pop (Stack * S, infotype X);
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

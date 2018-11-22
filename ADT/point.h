@@ -7,15 +7,10 @@ Definisi ABSTRACT DATA TYPE POINT */
 #define POINT_H
 
 #include "boolean.h"
-
-typedef struct {
-	int X; /* absis   */
-	int Y; /* ordinat */
-} POINT;
+#include "tipebentukan.h"
 
 /* *** Notasi Akses: Selektor POINT *** */
-#define Absis(P) (P).X
-#define Ordinat(P) (P).Y
+
 
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */

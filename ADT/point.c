@@ -8,6 +8,8 @@ Implementasi ABSTRACT DATA TYPE POINT */
 #include <math.h>
 #include "point.h"
 #include "boolean.h"
+//#include "tipebentukan.h"
+
 
 /* *** DEFINISI PROTOTIPE PRIMITIF *** */
 /* *** Konstruktor membentuk POINT *** */
@@ -24,7 +26,7 @@ POINT MakePOINT (int X, int Y){
 void BacaPOINT (POINT * P){
     int X,Y;
 
-    scanf("%f %f",&X,&Y);
+    scanf("%d %d",&X,&Y);
     *P = MakePOINT(X,Y);
 }
 /* Membaca nilai absis dan ordinat dari keyboard dan membentuk
@@ -35,7 +37,7 @@ void BacaPOINT (POINT * P){
 /* I.S. Sembarang */
 /* F.S. P terdefinisi */
 void TulisPOINT (POINT P){
-    printf("(%f,%f)\n",Absis(P),Ordinat(P));
+    printf("(%d,%d)\n",Absis(P),Ordinat(P));
 }
 /* Nilai P ditulis ke layar dengan format "(X,Y)"
    tanpa spasi, enter, atau karakter lain di depan, belakang,
@@ -189,9 +191,9 @@ void Putar (POINT *P, int Sudut){
     int radian;
     POINT Q;
 
-    radian = Sudut*(M_PI/180);
-    Absis(Q) = cos(radian)*Absis(*P) - sin(radian)*Ordinat(*P);
-    Ordinat(Q) = sin(radian)*Absis(*P) + cos(radian)*Ordinat(*P);
+    //radian = Sudut*(M_PI/180);
+    //Absis(Q) = cos(radian)*Absis(*P) - sin(radian)*Ordinat(*P);
+    //Ordinat(Q) = sin(radian)*Absis(*P) + cos(radian)*Ordinat(*P);
 
     *P = Q;
 }
