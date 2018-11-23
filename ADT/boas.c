@@ -371,6 +371,19 @@ void NextTick(Player P){
     }
 
     //Selesaikan permainan jika life 0, panggil credit
+    if(Life(P) == 0){
+        Credit();
+    }
+}
+
+void Credit(){
+    printf("GAME ENDED\n");
+    printf("CREATED BY:");
+    printf("Johanes Boas - 13517009\n");
+    printf("Kevin Nathaniel - 13517072\n");
+    printf("Timothy - 13517087\n");
+    printf("Louis Cahyadi - 13517126\n");
+    printf("Special thanks to Panawar Hasibuan :)\n");
 }
 
 int main(){

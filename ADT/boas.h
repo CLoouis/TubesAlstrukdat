@@ -24,5 +24,6 @@ void Place(Player P);
 void Give(Player P);   
 void Recipe();
 void NextTick(Player P);
+void Credit();
 
 #endif
