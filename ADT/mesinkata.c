@@ -10,7 +10,6 @@
 #include "mesinkata.h"
 #include "tipebentukan.h"
 
-extern boolean EndKata;
 
 void IgnoreBlank()
 /* Mengabaikan satu atau beberapa BLANK
@@ -86,7 +85,7 @@ void SalinKata()
 		{
 			break;
 		}
-		if ((CC == MARK) || (CC == BLANK) || (CC == '\n')) 
+		if ((CC == MARK) /*|| (CC == BLANK) */ || (CC == '\n') || (CC == ',')) 
 		{
 			CKata.TabKata[i+1] = '\0';
 			break;

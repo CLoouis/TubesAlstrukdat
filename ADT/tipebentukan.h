@@ -89,12 +89,20 @@ typedef struct {
 	Stack Hand;  /* Bahan Mentah */
     POINT Posisi; // posisi kolomg
     int room; // ruang mana
+    Kata name;
     int money;
+    int life;
+    int time;
 } Player;
+
 #define FoodStack(P) (P).FoodStack
 #define Hand(P) (P).Hand
 #define Posisi(P) (P).Posisi
 #define Room(P) (P).room
+#define Name(P) (P).name
+#define Money(P) (P).money
+#define Life(P) (P).life
+#define Time(P) (P).time
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -189,7 +197,7 @@ typedef struct {
 
 /* State Mesin Kata */
 extern boolean EndKata;
-extern MesinKata CKata;
+extern MesinKata CKatan;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -199,6 +207,10 @@ BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
 Kata DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 Customer arrayCust[13]; //Salinan customer ke meja
+typedef char peta[9][9];
+typedef peta ruang[5];
+ruang ruangan;
+
 #define MARK '.'
 #define BLANK ' '
 //-----------------------------------------------------------------------------------------------------------------------------------

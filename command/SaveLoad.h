@@ -1,12 +1,12 @@
 #ifdef SAFELOAD_H
 #define SAFELOAD_H
 
-#include "../ADT/mesinkata.h"
+#include "../ADT/tipebentukan.h"
 #include "../ADT/boolean.h"
 
-void Load();
+void Load (Player *P, Queue *AntrianLuar, ruang *ruangan);
 
-void Save();
+void Save ();
 
 
 #endif
