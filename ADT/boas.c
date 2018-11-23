@@ -1,4 +1,4 @@
-#include"boas.h"
+#include "boas.h"
 //#include "tipebentukan.h"
 
 char peta[9][9];// peta adalah peta kitchen
@@ -142,7 +142,7 @@ void Take(Player *P, POINT *pts){
         Push(&Hand(*P), "Keju");    
     }
     else if((pt.X == 2) && (pt.Y == 1)){ //2
-        Push(&Hand(*P), "Bolognaise");
+        Push(&Hand(*P), "Bolognese");
     }
     else if((pt.X == 3) && (pt.Y == 1)){ //3
         Push(&Hand(*P), "Carbonara");
@@ -203,7 +203,7 @@ int main(){
     DaftarMeja[4].X = 7;
     DaftarMeja[4].Y = 7;
 
-    infotype temp;
+    //infotype temp;
     POINT poin;
     Player pemain;
     peta[1][1] = 'M';
@@ -225,11 +225,14 @@ int main(){
 
     CreateStackEmpty(&FoodStack(pemain));
     CreateStackEmpty(&Hand(pemain));
+    MakeTree("Piring",Tree("Sendok",Tree("Es Krim",Tree("Pisang",Tree("Banana Split",Nil,Nil),Nil),Tree("Stroberi",Tree("Sundae",Nil,Nil),Nil)),Tree("Nasi",Tree("Telur",Tree("Nasi Telur Dadar",Nil,Nil),Nil),Tree("Ayam Goreng",Tree("Nasi Ayam Goreng",Nil,Nil),Nil)))
+                     ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
+    PrintTree(Resep,2);
 	//Push(&FoodStack(pemain),"Kentang");
 	//Push(&FoodStack(pemain),"Brokoli");
 	//printf("%s",InfoTop(FoodStack(pemain)));
     pemain.Posisi.X = 1;
-    pemain.Posisi.Y = 3;   
+    pemain.Posisi.Y = 2;   
     Take(&pemain, &poin);
     printf("%s\n",InfoTop(Hand(pemain)));
     //pemain.x = 6;

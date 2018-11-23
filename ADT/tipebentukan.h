@@ -194,6 +194,7 @@ extern MesinKata CKata;
 
 //---------------------------------------------------------OTHERS--------------------------------------------------------------------
 Queue AntrianLuar; //antrian di luar
+BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
 Kata DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 Customer arrayCust[13]; //Salinan customer ke meja
