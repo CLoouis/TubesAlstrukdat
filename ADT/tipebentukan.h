@@ -10,11 +10,11 @@
 #define MaxElStackt 10
 /* Nil adalah stack dengan elemen kosong . */
 /* Karena indeks dalam bhs C dimulai 0 maka tabel dg indeks 0 tidak dipakai */
-typedef char Kata[50];
+typedef char KataString[50];
 // typedef Kata infotype;
 typedef int addressS;   /* indeks tabel */
 typedef struct {
-	Kata TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
+	KataString TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
     addressS Top;
 } Stack;
 #define Top(S) (S).Top
@@ -37,7 +37,7 @@ typedef struct{
     int jumlah;
     int patience;
     int qpatience;// patience di queue
-    Kata order;
+    KataString order;
     boolean isi; // apakah si customer sudah pergi atau belum 
 }Customer;
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -62,7 +62,7 @@ typedef struct {
 /* ********** SELEKTOR ********** */
 #define Neff(T)   (T).Neff
 #define TI(T)     (T).TI
-#define Elmt(T,i) (T).TI[(i)]
+#define ArrayElmt(T,i) (T).TI[(i)]
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 //-------------------------------------------------------QUEUE-----------------------------------------------------------------------
@@ -89,7 +89,7 @@ typedef struct {
 	Stack Hand;  /* Bahan Mentah */
     POINT Posisi; // posisi kolomg
     int room; // ruang mana
-    Kata name;
+    KataString name;
     int money;
     int life;
     int time;
@@ -113,7 +113,7 @@ typedef struct {
 // typedef int infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist { 
-	Kata info;
+	KataString info;
 	address next;
 } ElmtList;
 
@@ -168,7 +168,7 @@ typedef struct {
 typedef struct tNode *addrNode;
 typedef struct tNode
 {
-  Kata info;
+  KataString info;
   addrNode left;
   addrNode right;
 } Node;
@@ -187,17 +187,17 @@ typedef addrNode BinTree;
 
 
 //-----------------------------------------------------MESINKATA-----------------------------------------------------------------------
-#define NMax 50
-#define BLANK ' '
+// #define NMax 50
+// #define BLANK ' '
 
-typedef struct {
-	char TabKata[NMax+1];  //container penyimpan kata, indeks yang dipakai [1..NMax] 
-    int Length;
-} MesinKata;
+// // typedef struct {
+// // 	char TabKata[NMax+1];  //container penyimpan kata, indeks yang dipakai [1..NMax] 
+// //     int Length;
+// // } Kata;
 
-/* State Mesin Kata */
-extern boolean EndKata;
-extern MesinKata CKatan;
+// /* State Mesin Kata */
+// extern boolean EndKata;
+// extern Kata CKata;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -205,14 +205,12 @@ extern MesinKata CKatan;
 Queue AntrianLuar; //antrian di luar
 BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
-Kata DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
+KataString DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 Customer arrayCust[13]; //Salinan customer ke meja
 typedef char peta[9][9];
 typedef peta ruang[5];
 ruang ruangan;
 
-#define MARK '.'
-#define BLANK ' '
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 #endif

@@ -26,7 +26,7 @@ boolean IsQueueFull (Queue Q)
 	return (((Head(Q) - Tail(Q)) == 1) || (Tail(Q) == MaxElQueue(Q) && Head(Q) == 1));
 }
 
-int NBElmt (Queue Q)
+int NBElmtQueue (Queue Q)
 /* Mengirimkan banyaknya elemen queue. Mengirimkan 0 jika Q kosong. */
 {
 	if (IsQueueEmpty(Q)) {

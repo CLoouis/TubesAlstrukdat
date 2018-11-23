@@ -100,7 +100,7 @@ void TulisMATRIKS (MATRIKS M){
 */
 
 /* ********** Operasi lain ********** */
-int NBElmt (MATRIKS M){
+int NBElmtMatriks (MATRIKS M){
 	return (NBrsEff(M)*NKolEff(M));
 }
 /* Mengirimkan banyaknya elemen M */

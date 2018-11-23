@@ -8,7 +8,10 @@
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
 #include "mesinkata.h"
-#include "tipebentukan.h"
+// #include "tipebentukan.h"
+
+Kata CKata;
+boolean EndKata;
 
 
 void IgnoreBlank()
@@ -18,7 +21,7 @@ void IgnoreBlank()
 {
 	/* Kamus Lokal */
 	/* Algoritma */
-	while ((CC == BLANK) && (CC != MARK))
+	while (((CC == ' ') || (CC == '\n')) && (CC != MARK))
 	{
 		ADV();
 	} /* CC != BLANK or CC = MARK */
@@ -85,7 +88,7 @@ void SalinKata()
 		{
 			break;
 		}
-		if ((CC == MARK) /*|| (CC == BLANK) */ || (CC == '\n') || (CC == ',')) 
+		if ((CC == MARK) || (CC == ' ') || (CC == '\n')) 
 		{
 			CKata.TabKata[i+1] = '\0';
 			break;

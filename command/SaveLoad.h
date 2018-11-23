@@ -1,4 +1,4 @@
-#ifdef SAFELOAD_H
+#ifndef SAFELOAD_H
 #define SAFELOAD_H
 
 #include "../ADT/tipebentukan.h"

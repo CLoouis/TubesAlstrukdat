@@ -6,7 +6,7 @@
 #include <string.h>
 
 /* *** Konstruktor *** */
-BinTree Tree(Kata Akar, BinTree L, BinTree R){
+BinTree Tree(KataString Akar, BinTree L, BinTree R){
     BinTree P;
 
     P = AlokNode(Akar);
@@ -20,7 +20,7 @@ BinTree Tree(Kata Akar, BinTree L, BinTree R){
 }
 /* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
 /* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
-void MakeTree(Kata Akar, BinTree L, BinTree R, BinTree *P){
+void MakeTree(KataString Akar, BinTree L, BinTree R, BinTree *P){
     *P = AlokNode(Akar);
 
     if (P != Nil){
@@ -32,7 +32,7 @@ void MakeTree(Kata Akar, BinTree L, BinTree R, BinTree *P){
 /* F.S. Membentuk pohon P dengan Akar(P)=Akar, Left(P)=L, dan Right(P)=R
 		jika alokasi berhasil. P = Nil jika alokasi gagal. */
 BinTree BuildBalanceTree(int n){
-    Kata X;
+    KataString X;
     addrNode P;
     int nl,nr;
     BinTree L,R;
@@ -56,7 +56,7 @@ BinTree BuildBalanceTree(int n){
 /* Menghasilkan sebuah balanced tree dengan n node, nilai setiap node dibaca */
 
 /* Manajemen Memory */
-addrNode AlokNode(Kata X){
+addrNode AlokNode(KataString X){
     addrNode P;
 
     P = (addrNode) malloc (sizeof(Node));
@@ -240,7 +240,7 @@ A
 */
 
 /* *** Searching *** */
-boolean SearchTree(BinTree P, Kata X){
+boolean SearchTree(BinTree P, KataString X){
     if (IsTreeEmpty(P)){
         return false;
     } else if (IsTreeOneElmt(P)){
@@ -305,7 +305,7 @@ boolean IsSkewRight(BinTree P){
 }
 /* Mengirimkan true jika P adalah pohon condong kanan */
 /* Pohon kosong adalah pohon condong kanan */
-int Level(BinTree P, Kata X){
+int Level(BinTree P, KataString X){
     if (Akar(P) == X){
         return 1;
     } else {
@@ -333,7 +333,7 @@ int Tinggi(BinTree P){
    Mengirim "height" yaitu tinggi dari pohon */
 
 /* *** Operasi lain *** */
-void AddDaunTerkiri(BinTree *P, Kata X){
+void AddDaunTerkiri(BinTree *P, KataString X){
     if (IsTreeEmpty(*P)){
         *P = AlokNode(X);
     } else {
@@ -342,7 +342,7 @@ void AddDaunTerkiri(BinTree *P, Kata X){
 }
 /* I.S. P boleh kosong */
 /* F.S. P bertambah simpulnya, dengan X sebagai simpul daun terkiri */
-void AddDaun(BinTree *P, Kata X, Kata Y, boolean Kiri){
+void AddDaun(BinTree *P, KataString X, KataString Y, boolean Kiri){
     addrNode N;
 
     if (IsTreeOneElmt(*P)){
@@ -367,7 +367,7 @@ void AddDaun(BinTree *P, Kata X, Kata Y, boolean Kiri){
 /* F.S. P bertambah simpulnya, dengan Y sebagai anak kiri X (jika Kiri = true), atau
         sebagai anak Kanan X (jika Kiri = false) */
 /*		Jika ada > 1 daun bernilai X, diambil daun yang paling kiri */
-void DelDaunTerkiri(BinTree *P, Kata *X){
+void DelDaunTerkiri(BinTree *P, KataString *X){
     addrNode N;
 
     if (IsTreeOneElmt(*P)){
@@ -386,7 +386,7 @@ void DelDaunTerkiri(BinTree *P, Kata *X){
 /* I.S. P tidak kosong */
 /* F.S. P dihapus daun terkirinya, dan didealokasi, dengan X adalah info yang semula
         disimpan pada daun terkiri yang dihapus */
-void DelDaun(BinTree *P, Kata X){
+void DelDaun(BinTree *P, KataString X){
     addrNode N;
 
     if (IsTreeOneElmt(*P)){

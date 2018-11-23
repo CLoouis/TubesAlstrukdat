@@ -8,7 +8,7 @@ void MakeEmpty (TabInt *T){
     Neff(*T) = 0;
 }
 
-int NbElmt (TabInt T){
+int NbElmtArray (TabInt T){
     return (Neff(T));
 }
 

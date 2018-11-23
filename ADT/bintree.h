@@ -18,10 +18,10 @@
 
 
 /* *** Konstruktor *** */
-BinTree Tree(Kata Akar, BinTree L, BinTree R);
+BinTree Tree(KataString Akar, BinTree L, BinTree R);
 /* Menghasilkan sebuah pohon biner dari A, L, dan R, jika alokasi berhasil */
 /* Menghasilkan pohon kosong (Nil) jika alokasi gagal */
-void MakeTree(Kata Akar, BinTree L, BinTree R, BinTree *P);
+void MakeTree(KataString Akar, BinTree L, BinTree R, BinTree *P);
 /* I.S. Akar, L, R terdefinisi. P Sembarang */
 /* F.S. Membentuk pohon P dengan Akar(P)=Akar, Left(P)=L, dan Right(P)=R
 		jika alokasi berhasil. P = Nil jika alokasi gagal. */
@@ -29,7 +29,7 @@ BinTree BuildBalanceTree(int n);
 /* Menghasilkan sebuah balanced tree dengan n node, nilai setiap node dibaca */
 
 /* Manajemen Memory */
-addrNode AlokNode(Kata X);
+addrNode AlokNode(KataString X);
 /* Mengirimkan addrNode hasil alokasi sebuah elemen */
 /* Jika alokasi berhasil, maka addrNode tidak Nil, dan misalnya menghasilkan P,
   maka Akar(P) = X, Left(P) = Nil, Right(P)=Nil */
@@ -99,7 +99,7 @@ A
 */
 
 /* *** Searching *** */
-boolean SearchTree(BinTree P, Kata X);
+boolean SearchTree(BinTree P, KataString X);
 /* Mengirimkan true jika ada node dari P yang bernilai X */
 
 /* *** Fungsi-Fungsi Lain *** */
@@ -114,7 +114,7 @@ boolean IsSkewLeft(BinTree P);
 boolean IsSkewRight(BinTree P);
 /* Mengirimkan true jika P adalah pohon condong kanan */
 /* Pohon kosong adalah pohon condong kanan */
-int Level(BinTree P, Kata X);
+int Level(BinTree P, KataString X);
 /* Mengirimkan level dari node X yang merupakan salah satu simpul dari pohon biner P.
    Akar(P) level-nya adalah 1. Pohon P tidak kosong. */
 int Tinggi(BinTree P);
@@ -122,19 +122,19 @@ int Tinggi(BinTree P);
    Mengirim "height" yaitu tinggi dari pohon */
 
 /* *** Operasi lain *** */
-void AddDaunTerkiri(BinTree *P, Kata X);
+void AddDaunTerkiri(BinTree *P, KataString X);
 /* I.S. P boleh kosong */
 /* F.S. P bertambah simpulnya, dengan X sebagai simpul daun terkiri */
-void AddDaun(BinTree *P, Kata X, Kata Y, boolean Kiri);
+void AddDaun(BinTree *P, KataString X, KataString Y, boolean Kiri);
 /* I.S. P tidak kosong, X adalah salah satu daun Pohon Biner P */
 /* F.S. P bertambah simpulnya, dengan Y sebagai anak kiri X (jika Kiri = true), atau
         sebagai anak Kanan X (jika Kiri = false) */
 /*		Jika ada > 1 daun bernilai X, diambil daun yang paling kiri */
-void DelDaunTerkiri(BinTree *P, Kata *X);
+void DelDaunTerkiri(BinTree *P, KataString *X);
 /* I.S. P tidak kosong */
 /* F.S. P dihapus daun terkirinya, dan didealokasi, dengan X adalah info yang semula
         disimpan pada daun terkiri yang dihapus */
-void DelDaun(BinTree *P, Kata X);
+void DelDaun(BinTree *P, KataString X);
 /* I.S. P tidak kosong, minimum ada 1 daun bernilai X. */
 /* F.S. Semua daun bernilai X dihapus dari P. */
 List MakeListDaun(BinTree P);

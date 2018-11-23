@@ -36,7 +36,7 @@ boolean IsFull (Stack S)
 }
 
 /* ************ Menambahkan sebuah elemen ke Stack ************ */
-void Push (Stack * S, Kata X)
+void Push (Stack * S, KataString X)
 /* Menambahkan X sebagai elemen Stack S. */
 /* I.S. S mungkin kosong, tabel penampung elemen stack TIDAK penuh */
 /* F.S. X menjadi TOP yang baru,TOP bertambah 1 */
@@ -47,7 +47,7 @@ void Push (Stack * S, Kata X)
 }
 
 /* ************ Menghapus sebuah elemen Stack ************ */
-void Pop (Stack * S, Kata X)
+void Pop (Stack * S, KataString X)
 /* Menghapus X dari Stack S. */
 /* I.S. S  tidak mungkin kosong */
 /* F.S. X adalah nilai elemen TOP yang lama, TOP berkurang 1 */

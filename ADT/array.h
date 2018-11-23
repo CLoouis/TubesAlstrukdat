@@ -6,7 +6,7 @@
 
 void MakeEmpty (TabInt *T);
 
-int NbElmt (TabInt T);
+int NbElmtArray (TabInt T);
 
 int GetFirstIdx (TabInt T);
 

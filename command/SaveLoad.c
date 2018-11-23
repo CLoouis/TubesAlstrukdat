@@ -13,7 +13,7 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
     // typedef char peta[9][9];
     // peta ruang[5];
     int i,j;
-    Kata test;
+    KataString test;
     // char Nama[NMax+1];
     // int Money;
     // int Life;
@@ -22,13 +22,15 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
     STARTKATA();
     while(CC != MARK){
         if (strcmp(CKata.TabKata, "Name") == 0){
-            // printf("%s\n", CKata.TabKata);
-            while (CC == ' ' || CC == '\n'){    
+            printf("%s\n", CKata.TabKata);
+            while ((CC == ' ') || (CC == '\n')){    
                 ADV();
             }
             ADVKATA();
-            // printf("%s\n", CKata.TabKata);
+            // ADVKATA();
+            printf("%s\n", CKata.TabKata);
             strcpy(Name(*P),CKata.TabKata);
+            printf("%s\n", Name(*P));
         }
         else if (strcmp(CKata.TabKata, "Money") == 0){
             while (CC == ' ' || CC == '\n'){    

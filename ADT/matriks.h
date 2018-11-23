@@ -55,7 +55,7 @@ void TulisMATRIKS (MATRIKS M);
 */
 
 /* ********** Operasi lain ********** */
-int NBElmt (MATRIKS M);
+int NBElmtMatriks (MATRIKS M);
 /* Mengirimkan banyaknya elemen M */
 
 void AmbilDataMatriks (MATRIKS *M);

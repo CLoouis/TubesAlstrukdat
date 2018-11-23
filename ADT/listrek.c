@@ -4,10 +4,10 @@
 #include "listrek.h"
 
 /* *** Manajemen Memori *** */
-address Alokasi (Kata X){
+address Alokasi (KataString X){
     address P;
 
-    P = (address) malloc(sizeof(Kata));
+    P = (address) malloc(sizeof(KataString));
     if(P==Nil){
         return(Nil);
     }
@@ -53,7 +53,7 @@ int IsOneElmt(List L){
 /* Mengirimkan 1 jika L berisi 1 elemen dan 0 jika > 1 elemen atau kosong */
 
 /* *** Selektor *** */
-// Kata FirstElmt (List L){
+// KataString FirstElmt (List L){
 //     return(Info(L));
 // }
 /* Mengirimkan elemen pertama sebuah list L yang tidak kosong */
@@ -63,7 +63,7 @@ List TailList(List L){
 /* Mengirimkan list L tanpa elemen pertamanya, mungkin menjadi list kosong */
 
 /* *** Konstruktor *** */
-List Konso(Kata e, List L){
+List Konso(KataString e, List L){
     address P;
     
     P = Alokasi(e);
@@ -78,7 +78,7 @@ List Konso(Kata e, List L){
 /* Mengirimkan list L dengan tambahan e sebagai elemen pertamanya. 
 e dialokasi terlebih dahulu. Jika alokasi gagal, mengirimkan L. */
 
-List KonsB(List L, Kata e){
+List KonsB(List L, KataString e){
     if(IsEmpty(L)){
         return (Alokasi(e));
     }
@@ -159,7 +159,7 @@ int NbElmtList (List L){
 }
 /* Mengirimkan banyaknya elemen list L, Nol jika L kosong */
 
-boolean Search (List L, Kata X){
+boolean Search (List L, KataString X){
     if(IsEmpty(L)){
         return(false);
     }
