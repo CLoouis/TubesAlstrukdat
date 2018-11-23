@@ -7,6 +7,8 @@
 #include <stdio.h>
 #include "queue.h"
 #include "stackt.h"
+#include "listrek.h"
+#include "bintree.h"
 
 
 
@@ -17,6 +19,9 @@ void Order(Player P);
 void Put();
 void Take(Player *P, POINT *pts );
 void CH(Player *P);
-void Place(Player P, Customer C, Queue Q);   
+void CT(Player *P);
+void Place(Player P);
+void Give(Player P);   
+void Recipe();
 
 #endif

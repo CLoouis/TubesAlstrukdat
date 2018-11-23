@@ -85,10 +85,11 @@ typedef struct { infotypeCust * T;   /* tabel penyimpan elemen */
 
 //-------------------------------------------------------PLAYER-----------------------------------------------------------------------
 typedef struct {
-	Stack FoodStack; /* tabel penyimpan elemen */
-	Stack Hand;  /* alamat TOP: elemen puncak */
+	Stack FoodStack; /* Tray */
+	Stack Hand;  /* Bahan Mentah */
     POINT Posisi; // posisi kolomg
     int room; // ruang mana
+    int money;
 } Player;
 #define FoodStack(P) (P).FoodStack
 #define Hand(P) (P).Hand

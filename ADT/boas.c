@@ -1,4 +1,6 @@
 #include "boas.h"
+#include <string.h>
+#include "boolean.h"
 //#include "tipebentukan.h"
 
 char peta[9][9];// peta adalah peta kitchen
@@ -10,61 +12,37 @@ boolean IsReachable(Player P, int x, int y, int jarak){
 }
 
 void Order(Player P){
-    if(IsReachable(P, 2, 2, 2)){
-        if(P.room == 1){
-            strcpy(DaftarOrder[1],arrayCust[1].order);
-        }
-        else if(P.room == 2){
-            strcpy(DaftarOrder[5],arrayCust[5].order);
-        }
-        else if(P.room == 3){
-            strcpy(DaftarOrder[9],arrayCust[9].order);
-        }
-    }
-    if(IsReachable(P, 2, 7, 2)){
-        if(P.room == 1){
-            strcpy(DaftarOrder[2],arrayCust[2].order);
-        }
-        else if(P.room == 2){
-            strcpy(DaftarOrder[6],arrayCust[6].order);
-        }
-        else if(P.room == 3){
-            strcpy(DaftarOrder[10],arrayCust[10].order);
+    int i;
+    boolean found;
+
+    found = false;
+    i=1;
+     while(!found && (i<=4)){
+        found = IsReachable(P,DaftarMeja[i].X,DaftarMeja[i].Y,2); //Tidak ada meja yang terjangkau
+        if(!found){
+            i++;
         }
     }
-    if(IsReachable(P, 7, 2, 2)){
-        if(P.room == 1){
-            strcpy(DaftarOrder[3],arrayCust[3].order);
-        }
-        else if(P.room == 2){
-            strcpy(DaftarOrder[7],arrayCust[7].order);
-        }
-        else if(P.room == 3){
-            strcpy(DaftarOrder[11],arrayCust[11].order);
-        }
+    if(!found){
+        printf("Tidak ada meja yang dapat dijangkau\n");
     }
-    if(IsReachable(P, 7, 7, 2)){
-        if(P.room == 1){
-            strcpy(DaftarOrder[4],arrayCust[4].order);
-        }
-        else if(P.room == 2){
-            strcpy(DaftarOrder[8],arrayCust[8].order);
-        }
-        else if(P.room == 3){
-            strcpy(DaftarOrder[12],arrayCust[12].order);
-        }
+    else{
+        i += (P.room-1) * 4; //i adalah indeks arrayCust
+        strcpy(DaftarOrder[i],arrayCust[i].order);
     }
 }
 
 void Put(){
 }
 
-void Place(Player P, Customer C, Queue Q){
+void Place(Player P){
     int N;
     boolean found;
+    infotypeCust  X;
 
+    Del(&AntrianLuar,&X);
     found = false;
-    N = InfoHead(Q).jumlah;
+    N = X.jumlah;
     int i;
     i = 1;
 
@@ -79,11 +57,11 @@ void Place(Player P, Customer C, Queue Q){
     }
     else{
         i += (P.room-1) * 4; //i adalah indeks arrayCust
-        if(arrayCust[i].jumlah >= C.jumlah){ //Meja cukup besar
+        if(arrayCust[i].jumlah >= X.jumlah){ //Meja cukup besar
             arrayCust[i].isi = true;
-            arrayCust[i].jumlah = C.jumlah;
-            strcpy(C.order,arrayCust[i].order);
-            arrayCust[i].patience = C.patience;
+            arrayCust[i].jumlah = X.jumlah;
+            strcpy(arrayCust[i].order,X.order);
+            arrayCust[i].patience = X.patience;
         }
         else{
             printf("Tidak ada meja yang dapat dijangkau\n");
@@ -93,7 +71,37 @@ void Place(Player P, Customer C, Queue Q){
     
 }
 
+void Give(Player P){
+    int i;
+    boolean found;
 
+    found = false;
+    i=1;
+     while(!found && (i<=4)){
+        found = IsReachable(P,DaftarMeja[i].X,DaftarMeja[i].Y,2); //Tidak ada meja yang terjangkau
+        if(!found){
+            i++;
+        }
+    }
+    if(!found){
+        printf("Tidak ada meja yang dapat dijangkau\n");
+    }
+    else{
+        i += (P.room-1) * 4; //i adalah indeks arrayCust
+        if(strcmp(arrayCust[i].order,InfoTop(P.FoodStack))){
+            if(strcmp(arrayCust[i].order,"Spaghetti Bolognese")){
+                P.money += 150;
+            }
+            else{
+                P.money += 100;
+            }
+            arrayCust[i].isi = false;
+        }
+        else{
+            printf("Pesanan tidak sesuai meja\n");
+        }
+    }
+}
 
 void CH(Player *P){
     Kata temp;
@@ -103,6 +111,13 @@ void CH(Player *P){
     }
 }
 
+void CT(Player *P){
+    Kata temp;
+
+    while(!IsStackEmpty(FoodStack(*P))){
+        Pop(&FoodStack(*P),temp);
+    }
+}
 
 void Take(Player *P, POINT *pts){
     boolean found;
@@ -190,7 +205,9 @@ void Take(Player *P, POINT *pts){
     (*pts).Y = pt.Y;
 }
 
-
+void Recipe(){
+    PrintTree(Resep,2);
+}
 
 
 int main(){
@@ -206,6 +223,7 @@ int main(){
     //infotype temp;
     POINT poin;
     Player pemain;
+    pemain.money = 0;
     peta[1][1] = 'M';
     peta[2][1] = 'M';
     peta[3][1] = 'M';
@@ -227,20 +245,24 @@ int main(){
     CreateStackEmpty(&Hand(pemain));
     MakeTree("Piring",Tree("Sendok",Tree("Es Krim",Tree("Pisang",Tree("Banana Split",Nil,Nil),Nil),Tree("Stroberi",Tree("Sundae",Nil,Nil),Nil)),Tree("Nasi",Tree("Telur",Tree("Nasi Telur Dadar",Nil,Nil),Nil),Tree("Ayam Goreng",Tree("Nasi Ayam Goreng",Nil,Nil),Nil)))
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
-    PrintTree(Resep,2);
+    Recipe();
 	//Push(&FoodStack(pemain),"Kentang");
 	//Push(&FoodStack(pemain),"Brokoli");
 	//printf("%s",InfoTop(FoodStack(pemain)));
-    pemain.Posisi.X = 1;
-    pemain.Posisi.Y = 2;   
-    Take(&pemain, &poin);
-    printf("%s\n",InfoTop(Hand(pemain)));
+    pemain.Posisi.X = 3;
+    pemain.Posisi.Y = 3;   
+    pemain.room = 1;
+    strcpy(arrayCust[1].order,"Kuda Bakar");
+    Order(pemain);
+    printf("%s\n",DaftarOrder[1]);
+    //Take(&pemain, &poin);
+    //printf("%s\n",InfoTop(Hand(pemain)));
     //pemain.x = 6;
     //pemain.y = 5;
     //Take(&pemain, &poin);
     //printf("%s\n",InfoTop(Hand(pemain)));
-    CH(&pemain);
-    printf("%s\n",InfoTop(Hand(pemain)));
+    //CH(&pemain);
+    //printf("%s\n",InfoTop(Hand(pemain)));
     //Pop(&Hand(pemain), temp);
     //printf("%s\n",InfoTop(Hand(pemain)));
     //printf("%s",temp);
