@@ -1,8 +1,8 @@
 #include"boas.h"
 //#include "tipebentukan.h"
 
-char peta[9][9];// peta adalah peta kitchen
-char peta2[9][9];//peta adalah peta ruang 
+// char peta[9][9];// peta adalah peta kitchen
+// char peta2[9][9];//peta adalah peta ruang 
 
 boolean IsReachable(Player P, int x, int y, int jarak){
 // Player P, x,y menyatakan koordinat tujuan, jarak menyatakan jarak yang kita mau, utk room 2, utk kitchen 1
@@ -106,33 +106,33 @@ void CH(Player *P){
 
 void Take(Player *P, POINT *pts){
     boolean found;
-    int jarak = 1;
+    // int jarak = 1;
     POINT pt; // pt : Posisi M
 
     found = false;
     if((!found) && ((*P).Posisi.X != 1)){
-        found = (peta[(*P).Posisi.X - 1][(*P).Posisi.Y] == 'M');
+        found = (ruangan[4][(*P).Posisi.X - 1][(*P).Posisi.Y] == 'M');
         if(found){
             pt.X = (*P).Posisi.X -1;
             pt.Y = (*P).Posisi.Y;
         }
     }
     if((!found) && ((*P).Posisi.Y != 8)){
-        found = (peta[(*P).Posisi.X][(*P).Posisi.Y+1] == 'M');
+        found = (ruangan[4][(*P).Posisi.X][(*P).Posisi.Y+1] == 'M');
         if(found){
             pt.X = (*P).Posisi.X ;
             pt.Y = (*P).Posisi.Y+1;
         }
     }
     if((!found) && ((*P).Posisi.X != 8)){
-        found = (peta[(*P).Posisi.X+1][(*P).Posisi.Y] == 'M');
+        found = (ruangan[4][(*P).Posisi.X+1][(*P).Posisi.Y] == 'M');
         if(found){
             pt.X = (*P).Posisi.X+1;
             pt.Y = (*P).Posisi.Y;
         }
     }
     if((!found) && ((*P).Posisi.Y != 1)){
-        found = (peta[(*P).Posisi.X][(*P).Posisi.Y-1] == 'M');
+        found = (ruangan[4][(*P).Posisi.X][(*P).Posisi.Y-1] == 'M');
         if(found){
             pt.X = (*P).Posisi.X;
             pt.Y = (*P).Posisi.Y-1;
@@ -203,25 +203,25 @@ int main(){
     DaftarMeja[4].X = 7;
     DaftarMeja[4].Y = 7;
 
-    infotype temp;
+    // Kata temp;
     POINT poin;
     Player pemain;
-    peta[1][1] = 'M';
-    peta[2][1] = 'M';
-    peta[3][1] = 'M';
-    peta[4][1] = 'M';
-    peta[5][1] = 'M';
-    peta[6][1] = 'M';
-    peta[7][1] = 'M';
-    peta[8][1] = 'M';
-    peta[5][4] = 'M';
-    peta[5][5] = 'M';
-    peta[5][6] = 'M';
-    peta[8][4] = 'M';
-    peta[8][5] = 'M';
-    peta[8][6] = 'M';
-    peta[8][7] = 'M';
-    peta[8][8] = 'M';
+    ruangan[4][1][1] = 'M';
+    ruangan[4][2][1] = 'M';
+    ruangan[4][3][1] = 'M';
+    ruangan[4][4][1] = 'M';
+    ruangan[4][5][1] = 'M';
+    ruangan[4][6][1] = 'M';
+    ruangan[4][7][1] = 'M';
+    ruangan[4][8][1] = 'M';
+    ruangan[4][5][4] = 'M';
+    ruangan[4][5][5] = 'M';
+    ruangan[4][5][6] = 'M';
+    ruangan[4][8][4] = 'M';
+    ruangan[4][8][5] = 'M';
+    ruangan[4][8][6] = 'M';
+    ruangan[4][8][7] = 'M';
+    ruangan[4][8][8] = 'M';
 
     CreateStackEmpty(&FoodStack(pemain));
     CreateStackEmpty(&Hand(pemain));

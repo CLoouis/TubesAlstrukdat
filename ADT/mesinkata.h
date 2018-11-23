@@ -1,13 +1,20 @@
 /* File: mesinkata.h */
 /* Definisi Mesin Kata: Model Akuisisi Versi I */
 
-#ifndef __MESINKATA_H__
-#define __MESINKATA_H__
+#ifndef MESINKATA_H
+#define MESINKATA_H
 
 #include "boolean.h"
 #include "mesinkar.h"
 #include "tipebentukan.h"
 
+// #define NMax 50
+// typedef struct {
+//   char TabKata[NMax+1];  //container penyimpan kata, indeks yang dipakai [1..NMax] 
+//     int Length;
+// } MesinKatan;
+// extern MesinKatan CKata;
+// extern boolean EndKata;
 
 void IgnoreBlank();
 /* Mengabaikan satu atau beberapa BLANK
