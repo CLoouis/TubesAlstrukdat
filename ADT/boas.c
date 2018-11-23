@@ -6,6 +6,119 @@
 // char peta[9][9];// peta adalah peta kitchen
 // char peta2[9][9];//peta adalah peta ruang 
 
+void GoUp(Player *P){
+    if ((*P).Posisi.X == 1){
+        if(((*P).Posisi.Y == 5) && ((*P).room == 4)){
+            (*P).room = 1;
+            (*P).Posisi.X = 8;
+            (*P).Posisi.Y = 5;
+            Ruang(ruangan,4,1,5) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else if(((*P).Posisi.Y == 5) && ((*P).room == 3)){
+            (*P).room = 2;
+            (*P).Posisi.X = 8;
+            (*P).Posisi.Y = 5;
+            Ruang(ruangan,4,1,5) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else{
+            printf("Mentok Bos\n");
+        }
+    } else if((Ruang(ruangan,(*P).room,((*P).Posisi.X)-1,(*P).Posisi.Y) != '-')){
+        printf("Nabrak Bos\n");
+    } else {
+        Ruang(ruangan,(*P).room,(*P).Posisi.X,(*P).Posisi.Y) = '-';
+        Ruang(ruangan,(*P).room,((*P).Posisi.X) - 1,(*P).Posisi.Y) = 'P';
+        (*P).Posisi.X--;
+    }
+}
+
+void GoDown(Player *P){
+    if ((*P).Posisi.X == 8){
+        if(((*P).Posisi.Y == 5) && ((*P).room == 1)){
+            (*P).room = 4;
+            (*P).Posisi.X = 1;
+            (*P).Posisi.Y = 5;
+            Ruang(ruangan,1,8,5) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else if(((*P).Posisi.Y == 5) && ((*P).room == 2)){
+            (*P).room = 3;
+            (*P).Posisi.X = 1;
+            (*P).Posisi.Y = 5;
+            Ruang(ruangan,2,8,5) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else{
+            printf("Mentok Bos\n");
+        }
+    } else if((Ruang(ruangan,(*P).room,((*P).Posisi.X) + 1,(*P).Posisi.Y)  != '-')){
+        printf("Nabrak Bos\n");
+    } else {
+        Ruang(ruangan,(*P).room,(*P).Posisi.X,(*P).Posisi.Y) = '-';
+        Ruang(ruangan,(*P).room,((*P).Posisi.X) + 1,(*P).Posisi.Y) = 'P';
+        (*P).Posisi.X++;
+    }
+}
+
+void GoRight(Player *P){
+    if ((*P).Posisi.Y == 8){
+        if(((*P).Posisi.X == 5) && ((*P).room == 1)){
+            (*P).room = 2;
+            (*P).Posisi.X = 2;
+            (*P).Posisi.Y = 1;
+            Ruang(ruangan,1,5,8) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else if(((*P).Posisi.X == 5) && ((*P).room == 4)){
+            (*P).room = 3;
+            (*P).Posisi.X = 2;
+            (*P).Posisi.Y = 1;
+            Ruang(ruangan,4,5,8) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else{
+            printf("Mentok Bos\n");
+        }
+    } else if((Ruang(ruangan,(*P).room,((*P).Posisi.X),((*P).Posisi.Y) + 1) != '-')){
+        printf("Nabrak Bos\n");
+    } else {
+        Ruang(ruangan,(*P).room,(*P).Posisi.X,(*P).Posisi.Y) = '-';
+        Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y + 1) = 'P';
+        (*P).Posisi.Y++;
+    }
+}
+
+void GoLeft(Player *P){
+    if ((*P).Posisi.Y == 1){
+        if(((*P).Posisi.X == 2) && ((*P).room == 2)){
+            (*P).room = 1;
+            (*P).Posisi.X = 5;
+            (*P).Posisi.Y = 8;
+            Ruang(ruangan,2,2,1) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else if(((*P).Posisi.X == 2) && ((*P).room == 3)){
+            (*P).room = 4;
+            (*P).Posisi.X = 5;
+            (*P).Posisi.Y = 8;
+            Ruang(ruangan,3,2,1) = '-';
+            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+        }
+        else{
+            printf("Mentok Bos\n");
+        }
+    } else if((Ruang(ruangan,(*P).room,((*P).Posisi.X),((*P).Posisi.Y) - 1) != '-')){
+        printf("Nabrak Bos\n");
+        printf("%c\n",Ruang(ruangan,(*P).room,((*P).Posisi.X),((*P).Posisi.Y) - 1));
+    } else {
+        Ruang(ruangan,(*P).room,(*P).Posisi.X,(*P).Posisi.Y) = '-';
+        Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y - 1) = 'P';
+        (*P).Posisi.Y--;
+    }
+}
+
 void AddQueue(){
     int sabarluar; //QPatience
     int sabardalam; //Patience
@@ -139,14 +252,15 @@ void Place(Player P){//Ubah c ke x
     }   
 }
 
-void Give(Player P){
+void Give(Player *P){
     int i;
     boolean found;
+    KataString temp;
 
     found = false;
     i=1;
      while(!found && (i<=4)){
-        found = IsReachable(P,DaftarMeja[i].X,DaftarMeja[i].Y,2); //Tidak ada meja yang terjangkau
+        found = IsReachable((*P),DaftarMeja[i].X,DaftarMeja[i].Y,2); //Tidak ada meja yang terjangkau
         if(!found){
             i++;
         }
@@ -155,15 +269,18 @@ void Give(Player P){
         printf("Tidak ada meja yang dapat dijangkau\n");
     }
     else{
-        i += (P.room-1) * 4; //i adalah indeks arrayCust
-        if(strcmp(arrayCust[i].order,InfoTop(P.FoodStack))){
-            if(strcmp(arrayCust[i].order,"Spaghetti Bolognese")){
-                P.money += 150;
+        i += ((*P).room-1) * 4; //i adalah indeks arrayCust
+        if(strcmp(arrayCust[i].order,InfoTop(FoodStack(*P))) == 0){
+            if(strcmp(arrayCust[i].order,"Spaghetti Bolognese") == 0){
+                (*P).money += 150;
+                // printf("%d\n",P.money);
+                // printf("sampe\n");
             }
             else{
-                P.money += 100;
+                (*P).money += 100;
             }
             arrayCust[i].isi = false;
+            Pop(&FoodStack(*P),temp);
         }
         else{
             printf("Pesanan tidak sesuai meja\n");
@@ -394,6 +511,58 @@ void NextTick(Player P){
     }
 }
 
+void TampilPeta(int room){
+    for (int i = 1; i<9; i++){
+        for (int j = 1; j<9; j++){
+            printf("%c",Ruang(ruangan,room,i,j));
+            // printf("%c",Ruang(ruangan,2,i,j));
+            // printf("%c",Ruang(ruangan,3,i,j));
+            // printf("%c",Ruang(ruangan,4,i,j));
+        }
+        printf("\n");
+    }
+}
+
+void UpdatePeta(Player P){
+    int i,baris,kolom;
+
+    for(i=1;i<=4;i++){ // i adalah nomor meja tiap ruangan
+        baris = DaftarMeja[i].X;
+        kolom = DaftarMeja[i].Y;
+        for(int j=1;j<=3;j++){ // j adalah nomor ruangan
+            if(arrayCust[i +(j-1)*4].isi){ // Ubah kosong jadi terisi
+                if(Ruang(ruangan,j,baris-1,kolom) == 'X'){
+                    Ruang(ruangan,j,baris-1,kolom) = 'C'; 
+                }
+                if(Ruang(ruangan,j,baris+1,kolom) == 'X'){
+                    Ruang(ruangan,j,baris+1,kolom) = 'C'; 
+                }
+                if(Ruang(ruangan,j,baris,kolom+1) == 'X'){
+                    Ruang(ruangan,j,baris,kolom+1) = 'C'; 
+                }
+                if(Ruang(ruangan,j,baris,kolom-1) == 'X'){
+                    Ruang(ruangan,j,baris,kolom-1) = 'C'; 
+                }
+            }
+            else if(!(arrayCust[i +(j-1)*4].isi)) { // Ubah isi jadi kosong
+                if(Ruang(ruangan,j,baris-1,kolom) == 'C'){
+                    Ruang(ruangan,j,baris-1,kolom) = 'X'; 
+                }
+                if(Ruang(ruangan,j,baris+1,kolom) == 'C'){
+                    Ruang(ruangan,j,baris+1,kolom) = 'X'; 
+                }
+                if(Ruang(ruangan,j,baris,kolom+1) == 'C'){
+                    Ruang(ruangan,j,baris,kolom+1) = 'X'; 
+                }
+                if(Ruang(ruangan,j,baris,kolom-1) == 'C'){
+                    Ruang(ruangan,j,baris,kolom-1) = 'X'; 
+                }
+            }
+        }
+    }
+    // Ruang(ruangan,P.room,P.Posisi.X,P.Posisi.Y) = 'P';
+}
+
 void Credit(){
     printf("GAME ENDED\n");
     printf("CREATED BY:");
@@ -417,6 +586,68 @@ int main(){
     // Kata temp;
     POINT poin;
     Player pemain;
+	int i,j;
+
+    pemain.Posisi.X = 8;
+    pemain.Posisi.Y = 5;
+    pemain.room = 2;
+    pemain.money = 0;
+    //Inisialisasi peta
+    for (i = 1; i<9; i++){
+        for (j = 1; j<9; j++){
+            Ruang(ruangan,1,i,j) = '-';
+            Ruang(ruangan,2,i,j) = '-';
+            Ruang(ruangan,3,i,j) = '-';
+            Ruang(ruangan,4,i,j) = '-';
+        }
+    }
+    Ruang(ruangan,1,1,2) = 'X';
+    Ruang(ruangan,1,2,1) = 'X';
+    Ruang(ruangan,1,2,2) = '1';
+    Ruang(ruangan,1,2,3) = 'X';
+    Ruang(ruangan,1,2,6) = 'X';
+    Ruang(ruangan,1,2,7) = '2';
+    Ruang(ruangan,1,2,8) = 'X';
+    Ruang(ruangan,1,3,2) = 'X';
+    Ruang(ruangan,1,6,2) = 'X';
+    Ruang(ruangan,1,7,1) = 'X';
+    Ruang(ruangan,1,7,2) = '3';
+    Ruang(ruangan,1,7,3) = 'X';
+    Ruang(ruangan,1,7,6) = 'X';
+    Ruang(ruangan,1,7,7) = '4';
+    Ruang(ruangan,1,7,8) = 'X';
+    Ruang(ruangan,1,8,2) = 'X';
+
+    Ruang(ruangan,2,1,2) = 'X';
+    Ruang(ruangan,2,2,2) = '5';
+    Ruang(ruangan,2,2,6) = 'X';
+    Ruang(ruangan,2,2,7) = '6';
+    Ruang(ruangan,2,2,8) = 'X';
+    Ruang(ruangan,2,3,2) = 'X';
+    Ruang(ruangan,2,6,2) = 'X';
+    Ruang(ruangan,2,7,1) = 'X';
+    Ruang(ruangan,2,7,2) = '7';
+    Ruang(ruangan,2,7,3) = 'X';
+    Ruang(ruangan,2,7,6) = 'X';
+    Ruang(ruangan,2,7,7) = '8';
+    Ruang(ruangan,2,7,8) = 'X';
+    Ruang(ruangan,2,8,2) = 'X';
+
+    Ruang(ruangan,3,1,2) = 'X';
+    Ruang(ruangan,3,2,2) = '9';
+    Ruang(ruangan,3,2,6) = 'X';
+    Ruang(ruangan,3,2,7) = 'A';
+    Ruang(ruangan,3,2,8) = 'X';
+    Ruang(ruangan,3,3,2) = 'X';
+    Ruang(ruangan,3,6,2) = 'X';
+    Ruang(ruangan,3,7,1) = 'X';
+    Ruang(ruangan,3,7,2) = 'B';
+    Ruang(ruangan,3,7,3) = 'X';
+    Ruang(ruangan,3,7,6) = 'X';
+    Ruang(ruangan,3,7,7) = 'D';
+    Ruang(ruangan,3,7,8) = 'X';
+    Ruang(ruangan,3,8,2) = 'X';
+
     Ruang(ruangan,4,1,1) = 'M';
     Ruang(ruangan,4,2,1) = 'M';
     Ruang(ruangan,4,3,1) = 'M';
@@ -434,6 +665,8 @@ int main(){
     Ruang(ruangan,4,8,7) = 'M';
     Ruang(ruangan,4,8,8) = 'M';
 
+    Ruang(ruangan,pemain.room,pemain.Posisi.X,pemain.Posisi.Y) = 'P';
+    
     strcpy(DaftarResep[1],"Banana Split");
     strcpy(DaftarResep[2],"Sundae");
     strcpy(DaftarResep[3],"Nasi Telur Dadar");
@@ -449,14 +682,20 @@ int main(){
     MakeTree("Piring",Tree("Sendok",Tree("Es Krim",Tree("Pisang",Tree("Banana Split",Nil,Nil),Nil),Tree("Stroberi",Tree("Sundae",Nil,Nil),Nil)),Tree("Nasi",Tree("Telur",Tree("Nasi Telur Dadar",Nil,Nil),Nil),Tree("Ayam Goreng",Tree("Nasi Ayam Goreng",Nil,Nil),Nil)))
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
     //Recipe();
-	//Push(&FoodStack(pemain),"Kentang");
-	//Push(&FoodStack(pemain),"Brokoli");
-	//printf("%s",InfoTop(FoodStack(pemain)));
-    pemain.Posisi.X = 2;
-    pemain.Posisi.Y = 2;   
-    pemain.room = 4;
-    
-    printf("%c\n",Ruang(ruangan,1,1,1));
+    TampilPeta(pemain.room);
+    GoDown(&pemain);
+    printf("\n");
+    TampilPeta(pemain.room);
+    GoUp(&pemain);
+    printf("\n");
+    TampilPeta(pemain.room);
+    // printf("%c\n",Ruang(ruangan,1,1,1));
+    // arrayCust[1].isi = true;
+    // strcpy(arrayCust[1].order,"Spaghetti Bolognese");
+    // Push(&FoodStack(pemain),"Spaghetti Bolognese");
+    // Give(&pemain);
+    // printf("%d\n",pemain.money);
+    //printf("%s\n",InfoTop(FoodStack(pemain)));
     //strcpy(arrayCust[1].order,"Kuda Bakar");
     //Order(pemain);
     //printf("%s\n",DaftarOrder[1]);

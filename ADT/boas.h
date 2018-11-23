@@ -21,10 +21,15 @@ void Take(Player *P, POINT *pts );
 void CH(Player *P);
 void CT(Player *P);
 void Place(Player P);
-void Give(Player P);   
+void Give(Player *P);   
 void Recipe();
 void NextTick(Player P);
 void Credit();
 void AddQueue();
-
+void UpdatePeta();
+void GoUp(Player *P);
+void GoDown(Player *P);
+void GoLeft(Player *P);
+void GoRight(Player *P);
+void TampilPeta(int room);
 #endif
