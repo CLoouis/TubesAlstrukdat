@@ -88,7 +88,7 @@ void SalinKata()
 		{
 			break;
 		}
-		if ((CC == MARK) || (CC == ' ') || (CC == '\n')) 
+		if ((CC == MARK) || (CC == BLANK) || (CC == '\n')) 
 		{
 			CKata.TabKata[i+1] = '\0';
 			break;

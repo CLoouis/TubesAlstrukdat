@@ -2,7 +2,7 @@ Name
 Louis 
  
 Position
-5,3
+250,323
 
 Room
 4
@@ -67,7 +67,7 @@ Burger, 2
 orderan, meja
 
 FoodStack
-Burger, Sosis
+Burger, Sundae
 
 Hand
 Garpu, Piring

@@ -1,5 +1,5 @@
-Name 
-Louis 
+Name
+Louis
 
 Position
 5,3
@@ -67,8 +67,5 @@ Burger
 
 Hand
 Garpu, Piring
-
-
-
 
 .

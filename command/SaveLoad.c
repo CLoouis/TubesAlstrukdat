@@ -14,23 +14,58 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
     // peta ruang[5];
     int i,j;
     KataString test;
+    boolean koma;
     // char Nama[NMax+1];
     // int Money;
     // int Life;
     // int Time;
+    
 
     STARTKATA();
     while(CC != MARK){
         if (strcmp(CKata.TabKata, "Name") == 0){
-            printf("%s\n", CKata.TabKata);
-            while ((CC == ' ') || (CC == '\n')){    
+            while (CC == ' ' || CC == '\n'){    
                 ADV();
             }
             ADVKATA();
-            // ADVKATA();
-            printf("%s\n", CKata.TabKata);
             strcpy(Name(*P),CKata.TabKata);
-            printf("%s\n", Name(*P));
+        }
+        else if (strcmp(CKata.TabKata, "Position") == 0){
+            while (CC == ' ' || CC == '\n'){    
+                ADV();
+            }
+            ADVKATA();
+            Posisi(*P).X = 0;
+            Posisi(*P).Y = 0;
+            i = 0;
+            koma = false;
+            while (i <= CKata.Length-1){
+                if (CKata.TabKata[i] == ','){
+                    koma = true;
+                }
+                else {
+                    if (!koma){
+                        Posisi(*P).X *= 10;
+                        Posisi(*P).X += (int)CKata.TabKata[i] - 48;
+                    }
+                    else {
+                        Posisi(*P).Y *= 10;
+                        Posisi(*P).Y += (int)CKata.TabKata[i] - 48;
+                    }
+                }
+                i++;
+            }
+        }
+        else if (strcmp(CKata.TabKata, "Room") == 0){
+            while (CC == ' ' || CC == '\n'){    
+                ADV();
+            }
+            ADVKATA();
+            Room(*P) = 0;
+            for (i = 0; i <= CKata.Length-1; i++){
+                Room(*P) *= 10;
+                Room(*P) += (int)CKata.TabKata[i] - 48;
+            }
         }
         else if (strcmp(CKata.TabKata, "Money") == 0){
             while (CC == ' ' || CC == '\n'){    
@@ -141,26 +176,27 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                 }
             }
         }
-        else if (strcmp(CKata.TabKata, "FoodStack") == 0){
-            while (CC == ' ' || CC == '\n'){    
-                ADV();
-            }
-            ADVKATA();
-            Push(&(FoodStack(*P)),CKata.TabKata);
-            while (CC == ','){
-                while (CC == ' ' || CC == '\n'){    
-                    ADV();
-                }
-                ADVKATA();
-                Push(&(FoodStack(*P)),CKata.TabKata);
-            }
-        }
+        // else if (strcmp(CKata.TabKata, "FoodStack") == 0){
+        //     while (CC == ' ' || CC == '\n'){    
+        //         ADV();
+        //     }
+        //     ADVKATA();
+        //     Push(&(FoodStack(*P)),CKata.TabKata);
+        //     while (CC == ','){
+        //         while (CC == ' ' || CC == '\n'){    
+        //             ADV();
+        //         }
+        //         ADVKATA();
+        //         Push(&(FoodStack(*P)),CKata.TabKata);
+        //     }
+        // }
         while (CC == ' ' || CC == '\n'){    
             ADV();
         }
         ADVKATA();
     }
-    printf("Nama: %s\n", Name(*P));
+    printf("Name: %s\n", Name(*P));
+    printf("Position: %d,%d\n", Posisi(*P).X, Posisi(*P).Y);
     printf("Money: %d\n", Money(*P));
     printf("Life: %d\n", Life(*P));
     printf("Time: %d\n", Time(*P));
@@ -192,11 +228,11 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
         }
         printf("\n");
     }
-    printf("Food stack:");
-    while (!IsStackEmpty(FoodStack(*P))){
-        Pop(&(FoodStack(*P)), test);
-        printf("%s ",test);
-    }
+    // printf("Food stack:");
+    // while (!IsStackEmpty(FoodStack(*P))){
+    //     Pop(&(FoodStack(*P)), test);
+    //     printf("%s ",test);
+    // }
 }
 
 void Save(){

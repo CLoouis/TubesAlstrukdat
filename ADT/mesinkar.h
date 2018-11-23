@@ -5,11 +5,12 @@
 #define MESIN_KAR_H
 
 #include "boolean.h"
+
+#define MARK '.'
 // #include "tipebentukan.h"
 /* State Mesin */
 extern char CC;
 extern boolean EOP;
-#define MARK '.'
 
 
 void START();
