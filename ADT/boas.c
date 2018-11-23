@@ -32,7 +32,48 @@ void Order(Player P){
     }
 }
 
-void Put(){
+void Put(Player *P){
+    if(!(((*P).Posisi.X == 1 && (*P).Posisi.Y == 7) || ((*P).Posisi.X == 2 && (*P).Posisi.Y == 7) || ((*P).Posisi.X == 2 && (*P).Posisi.Y == 8))){
+        printf("Posisi tidak disebelah tray");
+    }
+    else{ 
+        if(strcmp(InfoTop(Hand(*P)),"Pisang") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Banana Split");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Strawberry") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Sundae");
+        } 
+        else if(strcmp(InfoTop(Hand(*P)),"Telur") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Nasi Telur Dadar");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Ayam Goreng") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Nasi Ayam Goreng");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Patty") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Burger");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Sosis") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Hot Dog");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Keju") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Spaghetti Bolognese");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Carbonara") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Spaghetti Carbonara");
+        }
+        else{
+            printf("Loh kok masuk sini?");
+        }
+
+    }
 }
 
 void Place(Player P){
@@ -301,6 +342,36 @@ void Recipe(){
     PrintTree(Resep,2);
 }
 
+void NextTick(Player P){
+    int i; //Elemen queue
+    int j; //Buat menggeser queue belakangnya
+
+    P.time++;
+    //Kurangi kesabaran antrian luar
+    for(i=1;i<=Tail(AntrianLuar);i++){
+        AntrianLuar.T[i].qpatience--;
+        if(AntrianLuar.T[i].qpatience == 0){ //Jika ada yang habis kesabaran
+            for(j=i;j<=Tail(AntrianLuar)-1;j++){
+                AntrianLuar.T[j] = AntrianLuar.T[j+1];
+            }
+            Tail(AntrianLuar)--;
+            Life(P)--;
+        }
+    }
+
+    //Kurangi kesabaran antrian dalam
+    for(i=1;i<=12;i++){
+        if(arrayCust[i].isi){
+            arrayCust[i].patience--;
+            if(arrayCust[i].patience == 0){ //Habis kesabaran
+                arrayCust[i].isi = false;
+                Life(P)--;
+            }
+        }
+    }
+
+    //Selesaikan permainan jika life 0, panggil credit
+}
 
 int main(){
     DaftarMeja[1].X = 2;
