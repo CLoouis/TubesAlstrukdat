@@ -16,7 +16,7 @@ void AddQueue(){
     pasien.patience = (rand() % 30) + 80;
     pasien.qpatience = (rand() % 30) + 60;
     pasien.jumlah = (rand() % 3) + 2;
-    strcpy(pasien.order, DaftarResep[(rand() % 8) + 1)];
+    strcpy(pasien.order, DaftarResep[(rand() % 8) + 1]);
     pasien.isi = false;
     Add(&AntrianLuar,pasien);
 }
