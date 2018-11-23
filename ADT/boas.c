@@ -32,7 +32,48 @@ void Order(Player P){
     }
 }
 
-void Put(){
+void Put(Player *P){
+    if(!(((*P).Posisi.X == 1 && (*P).Posisi.Y == 7) || ((*P).Posisi.X == 2 && (*P).Posisi.Y == 7) || ((*P).Posisi.X == 2 && (*P).Posisi.Y == 8))){
+        printf("Posisi tidak disebelah tray");
+    }
+    else{ 
+        if(strcmp(InfoTop(Hand(*P)),"Pisang") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Banana Split");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Strawberry") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Sundae");
+        } 
+        else if(strcmp(InfoTop(Hand(*P)),"Telur") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Nasi Telur Dadar");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Ayam Goreng") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Nasi Ayam Goreng");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Patty") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Burger");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Sosis") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Hot Dog");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Keju") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Spaghetti Bolognese");
+        }
+        else if(strcmp(InfoTop(Hand(*P)),"Carbonara") == 0){
+            CH(P);
+            Push(&FoodStack(*P), "Spaghetti Carbonara");
+        }
+        else{
+            printf("Loh kok masuk sini?");
+        }
+
+    }
 }
 
 void Place(Player P){
@@ -285,6 +326,7 @@ void Take(Player *P, POINT *pts){
     (*pts).Y = pt.Y;
 }
 
+
 void Recipe(){
     PrintTree(Resep,2);
 }
@@ -300,7 +342,7 @@ int main(){
     DaftarMeja[4].X = 7;
     DaftarMeja[4].Y = 7;
 
-    // Kata temp;
+    // KataString temp;
     POINT poin;
     Player pemain;
     ruangan[4][1][1] = 'M';
@@ -329,14 +371,14 @@ int main(){
 	//Push(&FoodStack(pemain),"Kentang");
 	//Push(&FoodStack(pemain),"Brokoli");
 	//printf("%s",InfoTop(FoodStack(pemain)));
-    pemain.Posisi.X = 2;
-    pemain.Posisi.Y = 2;   
-    pemain.room = 4;
+    //pemain.Posisi.X = 3;
+    //pemain.Posisi.Y = 3;   
+    //pemain.room = 1;
     //strcpy(arrayCust[1].order,"Kuda Bakar");
     //Order(pemain);
     //printf("%s\n",DaftarOrder[1]);
-    Take(&pemain, &poin);
-    printf("%s\n",InfoTop(Hand(pemain)));
+    //Take(&pemain, &poin);
+    //printf("%s\n",InfoTop(Hand(pemain)));
     //pemain.x = 6;
     //pemain.y = 5;
     //Take(&pemain, &poin);
@@ -352,6 +394,13 @@ int main(){
     //printf("%s\n",temp);
     //printf("%s",InfoTop(Hand(pemain)));
     //printf("%d, %d",poin.X, poin.Y);
+    Push(&Hand(pemain), "Piring");
+    Push(&Hand(pemain), "Sendok");
+    Push(&Hand(pemain), "Es Krim");
+    Push(&Hand(pemain), "Pisang");
+    pemain.Posisi.X = 2;
+    pemain.Posisi.Y = 8;
+    Put(&pemain);
 }
 
 
