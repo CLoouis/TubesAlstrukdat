@@ -207,10 +207,11 @@ BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
 KataString DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 Customer arrayCust[13]; //Salinan customer ke meja
-typedef char peta[9][9];
-typedef peta ruang[5];
+typedef struct {
+	char ruanganan[5][9][9];
+} ruang;
 ruang ruangan;
-
+#define Ruang(R,Z,X,Y) (R).ruanganan[Z][X][Y]
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 #endif
