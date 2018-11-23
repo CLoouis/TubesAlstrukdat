@@ -104,7 +104,7 @@ void Give(Player P){
 }
 
 void CH(Player *P){
-    Kata temp;
+    KataString temp;
 
     while(!IsStackEmpty(Hand(*P))){
         Pop(&Hand(*P),temp);
@@ -112,7 +112,7 @@ void CH(Player *P){
 }
 
 void CT(Player *P){
-    Kata temp;
+    KataString temp;
 
     while(!IsStackEmpty(FoodStack(*P))){
         Pop(&FoodStack(*P),temp);
@@ -153,53 +153,133 @@ void Take(Player *P, POINT *pts){
             pt.Y = (*P).Posisi.Y-1;
         }
     }
-    if((pt.X == 1) && (pt.X == 1)){ //1
-        Push(&Hand(*P), "Keju");    
+    if((pt.X == 1) && (pt.Y == 1)){ //1
+        if(strcmp(InfoTop(Hand(*P)),"Bolognese") == 0){
+            Push(&Hand(*P), "Keju");   
+        }
+        else{
+            printf("Eits, jangan ambil keju dulu\n");
+        } 
     }
     else if((pt.X == 2) && (pt.Y == 1)){ //2
-        Push(&Hand(*P), "Bolognese");
+        if(strcmp(InfoTop(Hand(*P)),"Spaghetti") == 0){
+            Push(&Hand(*P), "Bolognese");   
+        }
+        else{
+            printf("Eits, jangan ambil bolognese dulu\n");
+        } 
     }
     else if((pt.X == 3) && (pt.Y == 1)){ //3
-        Push(&Hand(*P), "Carbonara");
+        if(strcmp(InfoTop(Hand(*P)),"Spaghetti") == 0){
+            Push(&Hand(*P), "Carbonara");   
+        }
+        else{
+            printf("Eits, jangan ambil carbonara dulu\n");
+        } 
     }
     else if((pt.X == 4) && (pt.Y == 1)){ //4
-        Push(&Hand(*P), "Spaghetti");
+        if(strcmp(InfoTop(Hand(*P)),"Garpu") == 0){
+            Push(&Hand(*P), "Spaghetti");   
+        }
+        else{
+            printf("Eits, jangan ambil Spaghetti dulu\n");
+        } 
     }
     else if((pt.X == 5) && (pt.Y == 1)){ //5
-        Push(&Hand(*P), "Roti");
+        if(strcmp(InfoTop(Hand(*P)),"Garpu") == 0){
+            Push(&Hand(*P), "Roti");   
+        }
+        else{
+            printf("Eits, jangan ambil roti dulu\n");
+        } 
     }
     else if((pt.X == 6) && (pt.Y == 1)){ //6
-        Push(&Hand(*P), "Patty");
+        if(strcmp(InfoTop(Hand(*P)),"Roti") == 0){
+            Push(&Hand(*P), "Patty");   
+        }
+        else{
+            printf("Eits, jangan ambil patty dulu\n");
+        } 
     }
     else if((pt.X == 7) && (pt.Y == 1)){ //7
-        Push(&Hand(*P), "Sosis");
+        if(strcmp(InfoTop(Hand(*P)),"Roti") == 0){
+            Push(&Hand(*P), "Sosis");   
+        }
+        else{
+            printf("Eits, jangan ambil sosis dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 1)){ //8
-        Push(&Hand(*P), "Strawberry");
+        if(strcmp(InfoTop(Hand(*P)),"Es Krim") == 0){
+            Push(&Hand(*P), "Strawberry");   
+        }
+        else{
+            printf("Eits, jangan ambil strawberry dulu\n");
+        } 
     }
     else if((pt.X == 5) && (pt.Y == 4)){ //9
-        Push(&Hand(*P), "Garpu");
+        if(strcmp(InfoTop(Hand(*P)),"Piring") == 0){
+            Push(&Hand(*P), "Garpu");   
+        }
+        else{
+            printf("Eits, jangan ambil garpu dulu\n");
+        } 
     }
     else if((pt.X == 5) && (pt.Y == 5)){ //10
-        Push(&Hand(*P), "Piring");
+        if(IsStackEmpty(Hand(*P))){
+            Push(&Hand(*P), "Piring");   
+        }
+        else{
+            printf("Eits, jangan ambil piring dulu\n");
+        } 
     }
     else if((pt.X == 5) && (pt.Y == 6)){ //11
-        Push(&Hand(*P), "Sendok");
+        if(strcmp(InfoTop(Hand(*P)),"Piring") == 0){
+            Push(&Hand(*P), "Sendok");   
+        }
+        else{
+            printf("Eits, jangan ambil sendok dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 4)){ //12
-        Push(&Hand(*P), "Pisang");
+        if(strcmp(InfoTop(Hand(*P)),"Es Krim") == 0){
+            Push(&Hand(*P), "Pisang");   
+        }
+        else{
+            printf("Eits, jangan ambil pisang dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 5)){ //13
-        Push(&Hand(*P), "Es Krim");
+        if(strcmp(InfoTop(Hand(*P)),"Sendok") == 0){
+            Push(&Hand(*P), "Es Krim");   
+        }
+        else{
+            printf("Eits, jangan ambil es krim dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 6)){ //14
-        Push(&Hand(*P), "Nasi");
+        if(strcmp(InfoTop(Hand(*P)),"Sendok") == 0){
+            Push(&Hand(*P), "Nasi");   
+        }
+        else{
+            printf("Eits, jangan ambil nasi dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 7)){ //15
-        Push(&Hand(*P), "Telur");
+        if(strcmp(InfoTop(Hand(*P)),"Nasi") == 0){
+            Push(&Hand(*P), "Telur");   
+        }
+        else{
+            printf("Eits, jangan ambil telur dulu\n");
+        } 
     }
     else if((pt.X == 8) && (pt.Y == 8)){ //16
-        Push(&Hand(*P), "Ayam Goreng");
+        if(strcmp(InfoTop(Hand(*P)),"Nasi") == 0){
+            Push(&Hand(*P), "Ayam Goreng");   
+        }
+        else{
+            printf("Eits, jangan ambil ayam goreng dulu\n");
+        } 
     }
     (*pts).X = pt.X;
     (*pts).Y = pt.Y;
@@ -249,14 +329,14 @@ int main(){
 	//Push(&FoodStack(pemain),"Kentang");
 	//Push(&FoodStack(pemain),"Brokoli");
 	//printf("%s",InfoTop(FoodStack(pemain)));
-    pemain.Posisi.X = 3;
-    pemain.Posisi.Y = 3;   
-    pemain.room = 1;
-    strcpy(arrayCust[1].order,"Kuda Bakar");
-    Order(pemain);
-    printf("%s\n",DaftarOrder[1]);
-    //Take(&pemain, &poin);
-    //printf("%s\n",InfoTop(Hand(pemain)));
+    pemain.Posisi.X = 2;
+    pemain.Posisi.Y = 2;   
+    pemain.room = 4;
+    //strcpy(arrayCust[1].order,"Kuda Bakar");
+    //Order(pemain);
+    //printf("%s\n",DaftarOrder[1]);
+    Take(&pemain, &poin);
+    printf("%s\n",InfoTop(Hand(pemain)));
     //pemain.x = 6;
     //pemain.y = 5;
     //Take(&pemain, &poin);
