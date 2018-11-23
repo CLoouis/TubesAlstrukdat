@@ -110,7 +110,7 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                 while (CC == ' ' || CC == '\n'){    
                     ADV();
                 }
-                *ruangan[4][i][j] = CC;
+                Ruang(*ruangan,4,i,j) = CC;
                 ADV();
                 j++;
                 if(j == 9){
@@ -129,7 +129,7 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                 while (CC == ' ' || CC == '\n'){    
                     ADV();
                 }
-                *ruangan[1][i][j] = CC;
+                Ruang(*ruangan,1,i,j) = CC;
                 ADV();
                 j++;
                 if(j == 9){
@@ -137,6 +137,13 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                     i++;
                 }
             }
+            // printf("Ruang 1: \n");
+            // for(i=1;i<=8;i++){
+            //     for(j=1;j<=8;j++){
+            //         printf("%c ",*ruangan1[i][j]);
+            //     }
+            //     printf("\n");
+            // }
         }
         else if (strcmp(CKata.TabKata, "Room2") == 0){
             while (CC == ' ' || CC == '\n'){    
@@ -148,7 +155,7 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                 while (CC == ' ' || CC == '\n'){    
                     ADV();
                 }
-                *ruangan[2][i][j] = CC;
+                Ruang(*ruangan,2,i,j) = CC;
                 ADV();
                 j++;
                 if(j == 9){
@@ -156,6 +163,13 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                     i++;
                 }
             }
+            // printf("Ruang 2: \n");
+            // for(i=1;i<=8;i++){
+            //     for(j=1;j<=8;j++){
+            //         printf("%c ",*ruangan2[i][j]);
+            //     }
+            //     printf("\n");
+            // }
         }
         else if (strcmp(CKata.TabKata, "Room3") == 0){
             while (CC == ' ' || CC == '\n'){    
@@ -167,7 +181,7 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
                 while (CC == ' ' || CC == '\n'){    
                     ADV();
                 }
-                *ruangan[3][i][j] = CC;
+                Ruang(*ruangan,3,i,j) = CC;
                 ADV();
                 j++;
                 if(j == 9){
@@ -195,39 +209,39 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan){
         }
         ADVKATA();
     }
-    printf("Name: %s\n", Name(*P));
-    printf("Position: %d,%d\n", Posisi(*P).X, Posisi(*P).Y);
-    printf("Money: %d\n", Money(*P));
-    printf("Life: %d\n", Life(*P));
-    printf("Time: %d\n", Time(*P));
-    printf("Ruang 1: \n");
-    for(i=1;i<=8;i++){
-        for(j=1;j<=8;j++){
-            printf("%c ",*ruangan[1][i][j]);
-        }
-        printf("\n");
-    }
-    printf("Ruang 2: \n");
-    for(i=1;i<=8;i++){
-        for(j=1;j<=8;j++){
-            printf("%c ",*ruangan[2][i][j]);
-        }
-        printf("\n");
-    }
-    printf("Ruang 3: \n");
-    for(i=1;i<=8;i++){
-        for(j=1;j<=8;j++){
-            printf("%c ",*ruangan[3][i][j]);
-        }
-        printf("\n");
-    }
-    printf("Kitchen: \n");
-    for(i=1;i<=8;i++){
-        for(j=1;j<=8;j++){
-            printf("%c ",*ruangan[4][i][j]);
-        }
-        printf("\n");
-    }
+    // printf("Name: %s\n", Name(*P));
+    // printf("Position: %d,%d\n", Posisi(*P).X, Posisi(*P).Y);
+    // printf("Money: %d\n", Money(*P));
+    // printf("Life: %d\n", Life(*P));
+    // printf("Time: %d\n", Time(*P));
+    // printf("Ruang 1: \n");
+    // for(i=1;i<=8;i++){
+    //     for(j=1;j<=8;j++){
+    //         printf("%c ",*ruangan1[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    // printf("Ruang 2: \n");
+    // for(i=1;i<=8;i++){
+    //     for(j=1;j<=8;j++){
+    //         printf("%c ",*ruangan2[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    // printf("Ruang 3: \n");
+    // for(i=1;i<=8;i++){
+    //     for(j=1;j<=8;j++){
+    //         printf("%c ",*ruangan3[i][j]);
+    //     }
+    //     printf("\n");
+    // }
+    // printf("Kitchen: \n");
+    // for(i=1;i<=8;i++){
+    //     for(j=1;j<=8;j++){
+    //         printf("%c ",*ruangan4[i][j]);
+    //     }
+    //     printf("\n");
+    // }
     // printf("Food stack:");
     // while (!IsStackEmpty(FoodStack(*P))){
     //     Pop(&(FoodStack(*P)), test);

@@ -4,7 +4,7 @@
 #include "../ADT/tipebentukan.h"
 #include "../ADT/boolean.h"
 
-void Load (Player *P, Queue *AntrianLuar, ruang *ruangan);
+void Load(Player *P, Queue *AntrianLuar, ruang *ruangan);
 
 void Save ();
 
