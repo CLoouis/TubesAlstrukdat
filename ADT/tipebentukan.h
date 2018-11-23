@@ -208,7 +208,7 @@ Kata DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 Customer arrayCust[13]; //Salinan customer ke meja
 typedef char peta[9][9];
 typedef peta ruang[5];
-ruang room;
+ruang ruangan;
 
 #define MARK '.'
 #define BLANK ' '
