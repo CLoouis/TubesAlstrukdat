@@ -211,6 +211,7 @@ typedef struct {
 	char ruanganan[5][9][9];
 } ruang;
 ruang ruangan;
+KataString DaftarResep[9];
 #define Ruang(R,Z,X,Y) (R).ruanganan[Z][X][Y]
 //-----------------------------------------------------------------------------------------------------------------------------------
 

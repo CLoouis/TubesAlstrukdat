@@ -25,5 +25,6 @@ void Give(Player P);
 void Recipe();
 void NextTick(Player P);
 void Credit();
+void AddQueue();
 
 #endif
