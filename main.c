@@ -1,3 +1,5 @@
+//gcc -o main main.c command/boas.c command/SaveLoad.c ADT/point.c ADT/stackt.c ADT/mesinkar.c ADT/mesinkata.c ADT/queue.c ADT/listrek.c ADT/bintree.c -lm
+
 #include <stdio.h>
 #include "ADT/boolean.h"
 #include "command/boas.h"
