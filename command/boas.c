@@ -130,10 +130,10 @@ void AddQueue(Player P){
     int pesan;
     infotypeCust pasien;
 
-    pasien.patience = (Time(P) % 30) + 80;
-    pasien.qpatience = (Time(P) % 30) + 60;
-    pasien.jumlah = (Time(P) % 3) + 2;
-    strcpy(pasien.order, DaftarResep[(Time(P) % 8) + 1]);
+    pasien.patience = (rand() % 30) + 80;
+    pasien.qpatience = 30;
+    pasien.jumlah = (rand() % 3) + 2;
+    strcpy(pasien.order, DaftarResep[(rand() % 8) + 1]);
     pasien.isi = false;
     Add(&AntrianLuar,pasien);
 
@@ -519,7 +519,7 @@ void NextTick(Player *P){
     if(Life(*P) == 0){
         Credit();
     }
-    if(((*P).time % 60) == 0){
+    if(((*P).time % 60) == 1){
         AddQueue(*P);
     }
 }
@@ -552,6 +552,13 @@ void UpdatePeta(Player P){
                 }
                 if(Ruang(ruangan,j,baris,kolom-1) == 'X'){
                     Ruang(ruangan,j,baris,kolom-1) = 'C'; 
+                }
+                if(arrayCust[i +(j-1)*4].jumlah == 2){
+                    Ruang(ruangan, j, baris, kolom-1) = 'X';
+                    Ruang(ruangan, j, baris, kolom+1) = 'X';
+                }
+                else if(arrayCust[i +(j-1)*4].jumlah == 3){
+                    Ruang(ruangan, j, baris, kolom-1) = 'X';
                 }
             }
             else if(!(arrayCust[i +(j-1)*4].isi)) { // Ubah isi jadi kosong

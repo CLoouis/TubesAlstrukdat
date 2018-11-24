@@ -4,6 +4,7 @@
 #include "../ADT/boolean.h"
 #include "../ADT/point.h"
 #include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
 #include "../ADT/queue.h"
 #include "../ADT/stackt.h"
