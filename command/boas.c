@@ -5,13 +5,9 @@
 #include "../ADT/mesinkata2.h"
 #include "../ADT/mesinkar2.h"
 #include "SaveLoad.h"
-// #include "tipebentukan.h"
 
-// char peta[9][9];// peta adalah peta kitchen
-// char peta2[9][9];//peta adalah peta ruang 
 
 void GoUp(Player *P){
-    Pintu door;
     if ((*P).Posisi.X == 1){
         if(((*P).Posisi.Y == 5) && ((*P).room == 4)){
             (*P).room = 1;
@@ -213,7 +209,6 @@ void Put(Player *P){
 }
 
 void Place(Player P){//Ubah c ke x
-    int N; //Jumlah orang antrian terdepan
     boolean found;
     infotypeCust X;
 
@@ -302,6 +297,7 @@ void Give(Player *P){
             }
             arrayCust(arrayCust,i).isi = false;
             Pop(&FoodStack(*P),temp);
+            strcpy(DaftarOrder(DaftarOrder,i), "-");
         }
         else{
             printf("Pesanan tidak sesuai meja\n");
@@ -530,7 +526,8 @@ void NextTick(Player *P){
         Credit();
 
     }
-    if(((*P).time % 60) == 1){
+    j = rand();
+    if((j % 30) == 1){
         AddQueue(*P);
     }
     UpdatePeta(*P,&ruangan, arrayCust);
