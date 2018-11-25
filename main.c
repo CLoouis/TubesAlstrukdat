@@ -262,7 +262,7 @@ int main(){
     InsertEdge(&G,Pintu8,Pintu7);
     
     //-----------------------------------------------------MAIN PROGRAM-----------------------------------------------------------------------
-
+    tampilanAwal();
     inputtest = ' ';
     while(inputtest != 'q'){
         printf("\n");
