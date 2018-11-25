@@ -13,6 +13,7 @@
 #include "ADT/mesinkata.h"
 #include "ADT/tipebentukan.h"
 #include "ADT/queue.h"
+#include "ADT/graph.h"
 #include "ADT/listrek.h"
 #include "ADT/bintree.h"
 #include <string.h>
@@ -23,6 +24,7 @@ int main(){
     char inputtest;
     infotypeCust orang;
     //Variable untuk menu awal
+    Graph G;
     int input1;
     int indexUser;
     char name[10];
@@ -35,6 +37,7 @@ int main(){
     Player pemain;
     CreateStackEmpty(&FoodStack(pemain));
     CreateStackEmpty(&Hand(pemain));
+    CreateGraph(&G);
     Room(pemain) = 1;
     pemain.money = 0;
     pemain.life = 3;
@@ -205,212 +208,60 @@ int main(){
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
 
     
-    //Create peta semua ruangan
-    // MATRIKS ruang[5];
-    // MakeMATRIKS (8,8,&ruang[1]);
-    // MakeMATRIKS (8,8,&ruang[2]);
-    // MakeMATRIKS (8,8,&ruang[3]);
-    // MakeMATRIKS (8,8,&ruang[4]);
+    Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
+    adrNode P1,P2,P3,P4,P5,P6,P7,P8;
 
-    //Variable untuk import dari file eksternal
-    // int i,j;
-    // char Nama[NMax+1]; //Nama di file eksternal
-    // int Money;
-    // int Life;
-    // int Time;
-    // printf("Cek\n");
-    // STARTKATA();
-    // printf("cek\n");
-    // printf("%s\n", CKata.TabKata);
-    // while(CC != MARK){
-    //     //printf("%s\n", CKata.TabKata);
-    //     if (strcmp(CKata.TabKata, "Name") == 0){
-    //         printf("%s\n", CKata.TabKata);
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         ADVKATA();
-    //         // printf("%s\n", CKata.TabKata);
-    //         strcpy(Nama,CKata.TabKata);
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Money") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         ADVKATA();
-    //         Money = 0;
-    //         for (i = 0; i <= CKata.Length-1; i++){
-    //             Money *= 10;
-    //             Money += (int)CKata.TabKata[i] - 48;
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Life") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         ADVKATA();
-    //         Life = 0;
-    //         for (i = 0; i <= CKata.Length-1; i++){
-    //             Life *= 10;
-    //             Life += (int)CKata.TabKata[i] - 48;
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Time") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         ADVKATA();
-    //         Time = 0;
-    //         for (i = 0; i <= CKata.Length-1; i++){
-    //             Time *= 10;
-    //             Time += (int)CKata.TabKata[i] - 48;
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Kitchen") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         i = 1;
-    //         j = 1;
-    //         while (i != 9){
-    //             while (CC == ' ' || CC == '\n'){
-    //                 ADV();
-    //             }
-    //             MatriksElmt(ruang[4],i,j) = CC;
-    //             //ruang[1][i][j] = CC;
-    //             ADV();
-    //             j++;
-    //             if(j == 9){
-    //                 j = 1;
-    //                 i++;
-    //             }
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Room1") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         i = 1;
-    //         j = 1;
-    //         while (i != 9){
-    //             while (CC == ' ' || CC == '\n'){
-    //                 ADV();
-    //             }
-    //             MatriksElmt(ruang[1],i,j) = CC;
-    //             //ruang[2][i][j] = CC;
-    //             ADV();
-    //             j++;
-    //             if(j == 9){
-    //                 j = 1;
-    //                 i++;
-    //             }
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Room2") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         i = 1;
-    //         j = 1;
-    //         while (i != 9){
-    //             while (CC == ' ' || CC == '\n'){
-    //                 ADV();
-    //             }
-    //             MatriksElmt(ruang[2],i,j) = CC;
-    //             //ruang[3][i][j] = CC;
-    //             ADV();
-    //             j++;
-    //             if(j == 9){
-    //                 j = 1;
-    //                 i++;
-    //             }
-    //         }
-    //     }
-    //     else if (strcmp(CKata.TabKata, "Room3") == 0){
-    //         while (CC == ' ' || CC == '\n'){
-    //             ADV();
-    //         }
-    //         i = 1;
-    //         j = 1;
-    //         while (i != 9){
-    //             while (CC == ' ' || CC == '\n'){
-    //                 ADV();
-    //             }
-    //             MatriksElmt(ruang[3],i,j) = CC;
-    //             //ruang[4][i][j] = CC;
-    //             ADV();
-    //             j++;
-    //             if(j == 9){
-    //                 j = 1;
-    //                 i++;
-    //             }
-    //         }
-    //     }
-    //     while (CC == ' ' || CC == '\n'){
-    //         ADV();
-    //     }
-    //     ADVKATA();
-    // }
-    // printf("Nama: %s\n", Nama);
-    // printf("Money: %d\n", Money);
-    // printf("Life: %d\n", Life);
-    // printf("Time: %d\n", Time);
-    // printf("Kitchen: \n");
-    // for(i=1;i<=8;i++){
-    //     for(j=1;j<=8;j++){
-    //         printf("%c ",MatriksElmt(ruang[4],i,j));
-    //     }
-    //     printf("\n");
-    // }
-    // printf("Ruang 1: \n");
-    // for(i=1;i<=8;i++){
-    //     for(j=1;j<=8;j++){
-    //         printf("%c ",MatriksElmt(ruang[1],i,j));
-    //     }
-    //     printf("\n");
-    // }
-    // printf("Ruang 2: \n");
-    // for(i=1;i<=8;i++){
-    //     for(j=1;j<=8;j++){
-    //         printf("%c ",MatriksElmt(ruang[2],i,j));
-    //     }
-    //     printf("\n");
-    // }
-    // printf("Ruang 3: \n");
-    // for(i=1;i<=8;i++){
-    //     for(j=1;j<=8;j++){
-    //         printf("%c ",MatriksElmt(ruang[3],i,j));
-    //     }
-    //     printf("\n");
-    // }
+    Pintu1.X = 1;
+    Pintu1.Y = 5;
+    Pintu1.Z = 8;
 
+    Pintu2.X = 2;
+    Pintu2.Y = 2;
+    Pintu2.Z = 1;
 
-    tampilanAwal();
-    //menu(&input1);
-    //AmbilDataArray(&User);
-//     while (input1 != 4){
-//         if (input1 == 1){
-//             newGame(&User,&name);
-//         } else if (input1 == 2){
-//             TulisMATRIKS(ruang[4]);
-//             printf("\n");
-//             GoUp(&pemain,&ruang[4]);
-//             TulisMATRIKS(ruang[4]);
-//             printf("\n");
-//             GoDown(&pemain,&ruang[4]);
-//             TulisMATRIKS(ruang[4]);
-//             printf("\n");
-//             GoLeft(&pemain,&ruang[4]);
-//             TulisMATRIKS(ruang[4]);
-//             printf("\n");
-//             GoRight(&pemain,&ruang[4]);
-//             TulisMATRIKS(ruang[4]);
-//             printf("%d, %d, %d\n",Room(pemain),Absis(Posisi(pemain)),Ordinat(Posisi(pemain)));
-//         } else if (input1 == 3){
-//             loadGame(User,&name,&indexUser);
-//         }
-//         menu(&input1);
-//     }
+    Pintu3.X = 2;
+    Pintu3.Y = 8;
+    Pintu3.Z = 5;
+
+    Pintu4.X = 3;
+    Pintu4.Y = 1;
+    Pintu4.Z = 5;
+
+    Pintu5.X = 3;
+    Pintu5.Y = 2;
+    Pintu5.Z = 1;
+
+    Pintu6.X = 4;
+    Pintu6.Y = 5;
+    Pintu6.Z = 8;
+
+    Pintu7.X = 4;
+    Pintu7.Y = 1;
+    Pintu7.Z = 5;
+
+    Pintu8.X = 1;
+    Pintu8.Y = 8;
+    Pintu8.Z = 5;
+
+    InsertNodeGraph(&G,Pintu1,&P1);
+    InsertNodeGraph(&G,Pintu2,&P2);
+    InsertNodeGraph(&G,Pintu3,&P3);
+    InsertNodeGraph(&G,Pintu4,&P4);
+    InsertNodeGraph(&G,Pintu5,&P5);
+    InsertNodeGraph(&G,Pintu6,&P6);
+    InsertNodeGraph(&G,Pintu7,&P7);
+    InsertNodeGraph(&G,Pintu8,&P8);
+
+    InsertEdge(&G,Pintu1,Pintu2);
+    InsertEdge(&G,Pintu2,Pintu1);
+    InsertEdge(&G,Pintu3,Pintu4);
+    InsertEdge(&G,Pintu4,Pintu3);
+    InsertEdge(&G,Pintu5,Pintu6);
+    InsertEdge(&G,Pintu6,Pintu5);
+    InsertEdge(&G,Pintu7,Pintu8);
+    InsertEdge(&G,Pintu8,Pintu7);
+    
+    //-----------------------------------------------------MAIN PROGRAM-----------------------------------------------------------------------
 
     inputtest = ' ';
     while(inputtest != 'q'){
@@ -440,38 +291,30 @@ int main(){
         for(IdxHand = 1; IdxHand <= Top(Hand(pemain)); IdxHand++){
             printf("%s\n", Hand(pemain).TI[IdxHand]);
         }
+
         TampilPeta(pemain.room);
+        scanf("%c",&inputtest);
         scanf("%c",&inputtest);
         if(inputtest == 'd'){
             GoRight(&pemain);
-            printf("%d\n",pemain.time);
         }
         else if(inputtest == 'w'){
             GoUp(&pemain);
-            printf("%d\n",pemain.time);
         }
         else if(inputtest == 'a'){
             GoLeft(&pemain);
-            printf("%d\n",pemain.time);
         }
         else if(inputtest == 's'){
             GoDown(&pemain);
-            printf("%d\n",pemain.time);
         }
         else if(inputtest == 'o'){
             Order(pemain);
-            printf("%s\n",DaftarOrder(DaftarOrder,1));
         }
         else if(inputtest == 'p'){
             Place(pemain);
-            printf("%s\n",arrayCust(arrayCust,1).order);
-            printf("%d\n",arrayCust(arrayCust,1).jumlah);
-            printf("%d\n",arrayCust(arrayCust,1).patience);
-            printf("%d\n",arrayCust(arrayCust,1).qpatience);
         }
         else if(inputtest == 't'){
             Take(&pemain);
-            printf("%s\n",InfoTop(Hand(pemain)));
         }
         else if(inputtest == 'z'){
             Put(&pemain);
