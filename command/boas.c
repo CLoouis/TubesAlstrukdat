@@ -11,19 +11,18 @@ void GoUp(Player *P){
     Pintu door;
     if ((*P).Posisi.X == 1){
         if(((*P).Posisi.Y == 5) && ((*P).room == 4)){
-            // door = 
             (*P).room = 1;
             (*P).Posisi.X = 8;
             (*P).Posisi.Y = 5;
-            Ruang(ruangan,4,1,5) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P7).X,Id(P7).Y,Id(P7).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P7))).X,Id(Succ(Trail(P7))).Y,Id(Succ(Trail(P7))).Z) = 'P';
         }
         else if(((*P).Posisi.Y == 5) && ((*P).room == 3)){
             (*P).room = 2;
             (*P).Posisi.X = 8;
             (*P).Posisi.Y = 5;
-            Ruang(ruangan,4,1,5) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P4).X,Id(P4).Y,Id(P4).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P4))).X,Id(Succ(Trail(P4))).Y,Id(Succ(Trail(P4))).Z) = 'P';
         }
         else{
             printf("Mentok Bos\n");
@@ -44,15 +43,15 @@ void GoDown(Player *P){
             (*P).room = 4;
             (*P).Posisi.X = 1;
             (*P).Posisi.Y = 5;
-            Ruang(ruangan,1,8,5) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P8).X,Id(P8).Y,Id(P8).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P8))).X,Id(Succ(Trail(P8))).Y,Id(Succ(Trail(P8))).Z) = 'P';
         }
         else if(((*P).Posisi.Y == 5) && ((*P).room == 2)){
             (*P).room = 3;
             (*P).Posisi.X = 1;
             (*P).Posisi.Y = 5;
-            Ruang(ruangan,2,8,5) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P3).X,Id(P3).Y,Id(P3).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P3))).X,Id(Succ(Trail(P3))).Y,Id(Succ(Trail(P3))).Z) = 'P';
         }
         else{
             printf("Mentok Bos\n");
@@ -73,15 +72,15 @@ void GoRight(Player *P){
             (*P).room = 2;
             (*P).Posisi.X = 2;
             (*P).Posisi.Y = 1;
-            Ruang(ruangan,1,5,8) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P1).X,Id(P1).Y,Id(P1).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P1))).X,Id(Succ(Trail(P1))).Y,Id(Succ(Trail(P1))).Z) = 'P';
         }
         else if(((*P).Posisi.X == 5) && ((*P).room == 4)){
             (*P).room = 3;
             (*P).Posisi.X = 2;
             (*P).Posisi.Y = 1;
-            Ruang(ruangan,4,5,8) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P6).X,Id(P6).Y,Id(P6).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P6))).X,Id(Succ(Trail(P6))).Y,Id(Succ(Trail(P6))).Z) = 'P';
         }
         else{
             printf("Mentok Bos\n");
@@ -102,15 +101,15 @@ void GoLeft(Player *P){
             (*P).room = 1;
             (*P).Posisi.X = 5;
             (*P).Posisi.Y = 8;
-            Ruang(ruangan,2,2,1) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P2).X,Id(P2).Y,Id(P2).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P2))).X,Id(Succ(Trail(P2))).Y,Id(Succ(Trail(P2))).Z) = 'P';
         }
         else if(((*P).Posisi.X == 2) && ((*P).room == 3)){
             (*P).room = 4;
             (*P).Posisi.X = 5;
             (*P).Posisi.Y = 8;
-            Ruang(ruangan,3,2,1) = '-';
-            Ruang(ruangan,(*P).room,((*P).Posisi.X),(*P).Posisi.Y) = 'P';
+            Ruang(ruangan,Id(P5).X,Id(P5).Y,Id(P5).Z) = '-';
+            Ruang(ruangan,Id(Succ(Trail(P5))).X,Id(Succ(Trail(P5))).Y,Id(Succ(Trail(P5))).Z) = 'P';
         }
         else{
             printf("Mentok Bos\n");
