@@ -11,6 +11,8 @@
 #include "ADT/stackt.h"
 #include "ADT/mesinkar.h"
 #include "ADT/mesinkata.h"
+#include "ADT/mesinkar2.h"
+#include "ADT/mesinkata2.h"
 #include "ADT/tipebentukan.h"
 #include "ADT/queue.h"
 #include "ADT/graph.h"
@@ -208,8 +210,8 @@ int main(){
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
 
     
-    // Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
-    // adrNode P1,P2,P3,P4,P5,P6,P7,P8;
+    Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
+    adrNode P1,P2,P3,P4,P5,P6,P7,P8;
 
     Pintu1.X = 1;
     Pintu1.Y = 5;
@@ -262,7 +264,7 @@ int main(){
     InsertEdge(&G,Pintu8,Pintu7);
     
     //-----------------------------------------------------MAIN PROGRAM-----------------------------------------------------------------------
-    tampilanAwal();
+
     inputtest = ' ';
     while(inputtest != 'q'){
         printf("\n");
@@ -293,42 +295,45 @@ int main(){
         }
 
         TampilPeta(pemain.room);
-        scanf("%c",&inputtest);
-        scanf("%c",&inputtest);
-        if(inputtest == 'd'){
-            GoRight(&pemain);
-        }
-        else if(inputtest == 'w'){
-            GoUp(&pemain);
-        }
-        else if(inputtest == 'a'){
-            GoLeft(&pemain);
-        }
-        else if(inputtest == 's'){
-            GoDown(&pemain);
-            printf("%d\n", Id(Succ(Trail(P8))).X);
-        }
-        else if(inputtest == 'o'){
-            Order(pemain);
-        }
-        else if(inputtest == 'p'){
-            Place(pemain);
-        }
-        else if(inputtest == 't'){
-            Take(&pemain);
-        }
-        else if(inputtest == 'z'){
-            Put(&pemain);
-        }
-        else if(inputtest == 'g'){
-            Give(&pemain);
-        }
-        else if(inputtest =='x'){
-            CH(&pemain);
-        }
-        else if(inputtest =='c'){
-            CT(&pemain);
-        }
+        Input(&pemain);
+        printf("%d\n",Id(Succ(Trail(P7))).X );
+        // scanf("%c",&inputtest);
+        // scanf("%c",&inputtest);
+        // if(inputtest == 'd'){
+        //     GoRight(&pemain);
+        // }
+        // else if(inputtest == 'w'){
+        //     GoUp(&pemain);
+        // }
+        // else if(inputtest == 'a'){
+        //     GoLeft(&pemain);
+        // }
+        // else if(inputtest == 's'){
+        //     GoDown(&pemain);
+        // }
+        // else if(inputtest == 'o'){
+        //     Order(pemain);
+        // }
+        // else if(inputtest == 'p'){
+        //     Place(pemain);
+        // }
+        // else if(inputtest == 't'){
+        //     Take(&pemain);
+        // }
+        // else if(inputtest == 'z'){
+        //     Put(&pemain);
+        // }
+        // else if(inputtest == 'g'){
+        //     Give(&pemain);
+        // }
+        // else if(inputtest =='x'){
+        //     CH(&pemain);
+        // }
+        // else if(inputtest =='c'){
+        //     CT(&pemain);
+        // }
     }
 
 }
+
+
