@@ -208,9 +208,9 @@ typedef struct {
   int Z;
 } Pintu;
 
-typedef struct tNodeGraph *adrNode;
+typedef struct tnodeGraph *adrNode;
 typedef struct tSuccNode *adrSuccNode;
-typedef struct tNodeGraph { 
+typedef struct tnodeGraph { 
   Pintu Id;
   adrSuccNode Trail;
   adrNode NextNode;
@@ -223,7 +223,8 @@ typedef struct tSuccNode {
 typedef struct {
   adrNode First;
 } Graph;
-
+Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
+adrNode P1,P2,P3,P4,P5,P6,P7,P8;
 /* Definisi list : */
 /* List kosong : First(L) = Nil */
 /* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
@@ -242,6 +243,8 @@ typedef struct {
 Queue AntrianLuar; //antrian di luar
 BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
+int KursiMeja[13];
+char NamaMeja[13];
 typedef struct{
   KataString Daftar[13]; //Daftar makanan yang dipesan, meja sesuai indeks
 } DaftarO;
@@ -257,8 +260,6 @@ typedef struct {
 } ruang;
 ruang ruangan;
 KataString DaftarResep[9];
-char NamaMeja[13];
-int KursiMeja[13];
 #define Ruang(R,Z,X,Y) (R).ruanganan[Z][X][Y]
 //-----------------------------------------------------------------------------------------------------------------------------------
 
