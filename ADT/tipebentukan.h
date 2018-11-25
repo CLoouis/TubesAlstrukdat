@@ -201,16 +201,66 @@ typedef addrNode BinTree;
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 
+//-----------------------------------------------------GRAPH-----------------------------------------------------------------------
+typedef struct {
+	int X;
+	int Y;
+	int Z;
+} Pintu;
+
+typedef struct tnodeGraph *adrNode;
+typedef struct tSuccNode *adrSuccNode;
+typedef struct tnodeGraph { 
+	Pintu Id;
+	adrSuccNode Trail;
+	adrNode NextNode;
+} NodeGraph;
+typedef struct tSuccNode {
+	adrNode Succ;
+	adrSuccNode NextSuccNode;
+} SuccNode;
+
+typedef struct {
+	adrNode First;
+} Graph;
+Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
+adrNode P1,P2,P3,P4,P5,P6,P7,P8;
+/* Definisi list : */
+/* List kosong : First(L) = Nil */
+/* Setiap elemen dengan address P dapat diacu Info(P), Next(P) */
+/* Elemen terakhir list : jika addressnya Last, maka Next(Last)=Nil */
+#define First(G) (G).First
+#define Id(Pn) (Pn)->Id
+#define Trail(Pn) (Pn)->Trail
+#define NextNode(Pn) (Pn)->NextNode
+
+#define Succ(Pt) (Pt)->Succ 
+#define NextSuccNode(Pt) (Pt)->NextSuccNode
+//-----------------------------------------------------------------------------------------------------------------------------------
+
+
 //---------------------------------------------------------OTHERS--------------------------------------------------------------------
 Queue AntrianLuar; //antrian di luar
 BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
-KataString DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
-Customer arrayCust[13]; //Salinan customer ke meja
-typedef char peta[9][9];
-typedef peta ruang[5];
+int KursiMeja[13];
+char NamaMeja[13];
+typedef struct{
+	KataString Daftar[13]; //Daftar makanan yang dipesan, meja sesuai indeks
+} DaftarO;
+DaftarO DaftarOrder; 
+#define DaftarOrder(a,i) (a).Daftar[i]
+typedef struct {
+	Customer Cust[13]; //Salinan customer ke meja
+} arrayC;
+arrayC arrayCust;
+#define arrayCust(a,i) (a).Cust[i]
+typedef struct {
+	char ruanganan[5][9][9];
+} ruang;
 ruang ruangan;
-
+KataString DaftarResep[9];
+#define Ruang(R,Z,X,Y) (R).ruanganan[Z][X][Y]
 //-----------------------------------------------------------------------------------------------------------------------------------
 
 #endif
