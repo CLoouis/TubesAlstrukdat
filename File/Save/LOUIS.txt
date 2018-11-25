@@ -57,7 +57,8 @@ M - - - - - - -
 M - - M M M M M 
 
 AntrianLuar
-0
+1
+4 60 30 Nasi_Ayam_Goreng
 
 Customer
 4 3 26 Nasi_Ayam_Goreng t

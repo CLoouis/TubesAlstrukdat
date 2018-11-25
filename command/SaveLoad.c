@@ -420,7 +420,7 @@ void Save (Player P, Queue AntrianLuar, ruang ruangan, arrayC arrayCust, DaftarO
     if (fptr == NULL) {
         perror("fopen()");
     }
-    fprintf(fptr, "Nama\n%s\n\n", Name(P));
+    fprintf(fptr, "Name\n%s\n\n", Name(P));
     fprintf(fptr, "Position\n%d,%d\n\n", Posisi(P).X, Posisi(P).Y);
     fprintf(fptr, "Room\n%d\n\n", Room(P));
     fprintf(fptr, "Money\n%d\n\n", Money(P));
