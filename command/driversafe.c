@@ -18,6 +18,11 @@ int main(){
 	Player P;
 	Queue AntrianLuar;
 	ruang ruangan;
+	DaftarO DaftarOrder; 
+	arrayC arrayCust;
+	boolean Found;
+	char input;
+	KataString temp;
 	for (i = 1; i<9; i++){
         for (j = 1; j<9; j++){
             Ruang(ruangan,1,i,j) = '-';
@@ -26,6 +31,9 @@ int main(){
             Ruang(ruangan,4,i,j) = '-';
         }
     }
+    CreateEmpty(&AntrianLuar,10);
+    printf("Nama disave: ");
+    scanf("%s", Name(P));
 	// for (i = 1; i<9; i++){
  //        for (j = 1; j<9; j++){
  //            printf("%c",ruangan[1][i][j]);
@@ -35,18 +43,33 @@ int main(){
  //        }
  //    }
 
-	CreateStackEmpty(&(FoodStack(P)));
-	CreateStackEmpty(&(Hand(P)));
-	Posisi(P).X = 0;
-	Posisi(P).Y = 0;
-	Room(P) = 0;
-	strcpy(Name(P)," ");
-	Money(P) = 0;
-	Life(P) = 0;
-	Time(P) = 0;
-	CreateEmpty(&AntrianLuar,10);
-
-	Load(&P, &AntrianLuar, &ruangan);
+	// CreateStackEmpty(&(FoodStack(P)));
+	// CreateStackEmpty(&(Hand(P)));
+	// Posisi(P).X = 0;
+	// Posisi(P).Y = 0;
+	// Room(P) = 0;
+	// strcpy(Name(P)," ");
+	// Money(P) = 0;
+	// Life(P) = 0;
+	// Time(P) = 0;
+	// CreateEmpty(&AntrianLuar,10);
+    Found = ceksave(Name(P));
+    if (Found){
+    	printf("Nama ditemukan\n");
+    	Load(&P, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+		Save(P, AntrianLuar, ruangan, arrayCust, DaftarOrder);
+    }
+	else {
+		printf("Apakah ingin membuat file baru? ");
+		scanf("%c", &input);
+		scanf("%c", &input);
+		if (input == 'Y' || input == 'y'){
+			newsave(Name(P));
+			Load(&P, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+			// printf("Name: %s\n", Name(P));
+			Save(P, AntrianLuar, ruangan, arrayCust, DaftarOrder);
+		}
+	}
 	printf("Name: %s\n", Name(P));
     printf("Position: %d,%d\n", Posisi(P).X, Posisi(P).Y);
     printf("Money: %d\n", Money(P));
