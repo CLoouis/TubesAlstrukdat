@@ -14,7 +14,7 @@ typedef char KataString[50];
 // typedef Kata infotype;
 typedef int addressS;   /* indeks tabel */
 typedef struct {
-	KataString TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
+  KataString TI[IdxMax+1]; /* memori tempat penyimpan elemen (container) */
     addressS Top;
 } Stack;
 #define Top(S) (S).Top
@@ -24,8 +24,8 @@ typedef struct {
 
 //--------------------------------------------------------POINT----------------------------------------------------------------------
 typedef struct {
-	int X; /* absis   */
-	int Y; /* ordinat */
+  int X; /* absis   */
+  int Y; /* ordinat */
 } POINT;
 #define Absis(P) (P).X
 #define Ordinat(P) (P).Y
@@ -55,8 +55,8 @@ typedef char KataArray[10];
 typedef int IdxType;  /* type indeks */
 typedef KataArray ArrayElType;   /* type elemen tabel */
 typedef struct { 
-	ArrayElType TI[100+1]; /* memori tempat penyimpan elemen (container) */
-	int Neff; /* >=0, banyaknya elemen efektif */
+  ArrayElType TI[100+1]; /* memori tempat penyimpan elemen (container) */
+  int Neff; /* >=0, banyaknya elemen efektif */
 } TabInt;
   
 /* ********** SELEKTOR ********** */
@@ -85,8 +85,8 @@ typedef struct { infotypeCust * T;   /* tabel penyimpan elemen */
 
 //-------------------------------------------------------PLAYER-----------------------------------------------------------------------
 typedef struct {
-	Stack FoodStack; /* Tray */
-	Stack Hand;  /* Bahan Mentah */
+  Stack FoodStack; /* Tray */
+  Stack Hand;  /* Bahan Mentah */
     POINT Posisi; // posisi kolomg
     int room; // ruang mana
     KataString name;
@@ -113,8 +113,8 @@ typedef struct {
 // typedef int infotype;
 typedef struct tElmtlist *address;
 typedef struct tElmtlist { 
-	KataString info;
-	address next;
+  KataString info;
+  address next;
 } ElmtList;
 
 /* Definisi list : */
@@ -122,8 +122,8 @@ typedef struct tElmtlist {
 typedef address List;
 
 /* Deklarasi  nama untuk variabel kerja */ 
-/*  	L : List */
-/*  	P : address 	*/
+/*    L : List */
+/*    P : address   */
 /* Maka penulisan First(L) menjadi L */
 /*                P.info menjadi Info(P); P.next menjadi Next(P) */
 
@@ -134,9 +134,9 @@ typedef address List;
 
 //----------------------------------------------------------JAM------------------------------------------------------------------
 typedef struct { 
-	int HH; /* integer [0..23] */
-	int MM; /* integer [0..59] */
-	int SS; /* integer [0..59] */
+  int HH; /* integer [0..23] */
+  int MM; /* integer [0..59] */
+  int SS; /* integer [0..59] */
 } JAM;
 
 /* *** Notasi Akses: selektor JAM *** */
@@ -154,9 +154,9 @@ typedef struct {
 typedef int indeks; /* indeks baris, kolom */
 // typedef int ElType; 
 typedef struct { 
-	char Mem[BrsMax+1][KolMax+1];
+  char Mem[BrsMax+1][KolMax+1];
     int NBrsEff; /* banyaknya/ukuran baris yg terdefinisi */
-	int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
+  int NKolEff; /* banyaknya/ukuran kolom yg terdefinisi */
 } MATRIKS;
 
 #define NBrsEff(M) (M).NBrsEff
@@ -191,7 +191,7 @@ typedef addrNode BinTree;
 // #define BLANK ' '
 
 // // typedef struct {
-// // 	char TabKata[NMax+1];  //container penyimpan kata, indeks yang dipakai [1..NMax] 
+// //   char TabKata[NMax+1];  //container penyimpan kata, indeks yang dipakai [1..NMax] 
 // //     int Length;
 // // } Kata;
 
@@ -205,13 +205,23 @@ typedef addrNode BinTree;
 Queue AntrianLuar; //antrian di luar
 BinTree Resep;
 POINT DaftarMeja[5]; //Letak koordinat dari meja
-KataString DaftarOrder[13]; //Daftar makanan yang dipesan, meja sesuai indeks
-Customer arrayCust[13]; //Salinan customer ke meja
+typedef struct{
+  KataString Daftar[13]; //Daftar makanan yang dipesan, meja sesuai indeks
+} DaftarO;
+DaftarO DaftarOrder; 
+#define DaftarOrder(a,i) (a).Daftar[i]
 typedef struct {
-	char ruanganan[5][9][9];
+  Customer Cust[13]; //Salinan customer ke meja
+} arrayC;
+arrayC arrayCust;
+#define arrayCust(a,i) (a).Cust[i]
+typedef struct {
+  char ruanganan[5][9][9];
 } ruang;
 ruang ruangan;
 KataString DaftarResep[9];
+char NamaMeja[13];
+int KursiMeja[13];
 #define Ruang(R,Z,X,Y) (R).ruanganan[Z][X][Y]
 //-----------------------------------------------------------------------------------------------------------------------------------
 
