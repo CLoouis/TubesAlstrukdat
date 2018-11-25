@@ -2,6 +2,8 @@
 #include <string.h>
 #include "../ADT/graph.h"
 #include "../ADT/boolean.h"
+#include "../ADT/mesinkar2.h"
+#include "../ADT/mesinkata2.h"
 //#include "tipebentukan.h"
 
 // char peta[9][9];// peta adalah peta kitchen
@@ -619,3 +621,134 @@ void tampilanAwal(){
     printf("-----------ENGI'S KITCHEN EXPANSION-----------\n");
     printf("----------------------------------------------\n");
 }
+
+void Input(Player *P){
+    int i;
+    i = 0;
+    STARTKATA2();
+    if(CKata2.Length2 == 2){
+        if(CKata2.TabKata2[0] == 'G'){
+            if(CKata2.TabKata2[1] == 'L'){
+                GoLeft(P);
+            }
+            else if(CKata2.TabKata2[1] == 'U'){
+                GoUp(P);
+            }
+            else if(CKata2.TabKata2[1] == 'D'){
+                GoDown(P);
+            }
+            else if (CKata2.TabKata2[1] == 'R'){
+                GoRight(P);
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'C'){
+            if(CKata2.TabKata2[1] == 'T'){
+                CT(P);
+            }
+            else if(CKata2.TabKata2[1] == 'H'){
+                CH(P);
+            }
+        }
+    }
+    else if(CKata2.Length2 == 3){
+        if(CKata2.TabKata2[0] == 'P'){
+            if(CKata2.TabKata2[1] == 'U'){
+                if(CKata2.TabKata2[2] == 'T'){
+                    Put(P);
+                }
+            }
+        }
+    }
+    else if(CKata2.Length2 == 4){
+        if(CKata2.TabKata2[0] == 'T'){
+            if(CKata2.TabKata2[1] == 'A'){
+                if(CKata2.TabKata2[2] == 'K'){
+                    if(CKata2.TabKata2[3] == 'E'){
+                        Take(P);
+                    }
+                }
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'G'){
+            if(CKata2.TabKata2[1] == 'I'){
+                if(CKata2.TabKata2[2] == 'V'){
+                    if(CKata2.TabKata2[3] == 'E'){
+                        Give(P);
+                    }
+                }
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'S'){
+            if(CKata2.TabKata2[1] == 'A'){
+                if(CKata2.TabKata2[2] == 'V'){
+                    if(CKata2.TabKata2[3] == 'E'){
+                        printf("Save\n" );
+                    }
+                }
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'L'){
+            if(CKata2.TabKata2[1] == 'O'){
+                if(CKata2.TabKata2[2] == 'A'){
+                    if(CKata2.TabKata2[3] == 'D'){
+                        printf("Load\n");
+                    }
+                }
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'E'){
+            if(CKata2.TabKata2[1] == 'X'){
+                if(CKata2.TabKata2[2] == 'I'){
+                    if(CKata2.TabKata2[3] == 'T'){
+                        printf("Exit\n");
+                    }
+                }
+            }
+        }
+    }
+    else if(CKata2.Length2 == 5){
+        if(CKata2.TabKata2[0] == 'O'){
+            if(CKata2.TabKata2[1] == 'R'){
+                if(CKata2.TabKata2[2] == 'D'){
+                    if(CKata2.TabKata2[3] == 'E'){
+                        if(CKata2.TabKata2[4] == 'R'){
+                            Order(*P);
+                        }    
+                    }
+                }
+            }
+        }
+        else if(CKata2.TabKata2[0] == 'P'){
+            if(CKata2.TabKata2[1] == 'L'){
+                if(CKata2.TabKata2[2] == 'A'){
+                    if(CKata2.TabKata2[3] == 'C'){
+                        if(CKata2.TabKata2[4] == 'E'){
+                            Place(*P);
+                        }    
+                    }
+                }
+            }
+        }
+    }
+    else if(CKata2.Length2 == 6){
+        if(CKata2.TabKata2[0] == 'R'){
+            if(CKata2.TabKata2[1] == 'E'){
+                if(CKata2.TabKata2[2] == 'C'){
+                    if(CKata2.TabKata2[3] == 'I'){
+                        if(CKata2.TabKata2[4] == 'P'){
+                            if(CKata2.TabKata2[5] == 'E'){
+                                Recipe();
+                            }
+                        }    
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+

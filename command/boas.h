@@ -14,7 +14,6 @@
 
 
 
-
 boolean IsReachable(Player P, int x, int y, int jarak);
 // Player P, x,y menyatakan koordinat tujuan, jarak menyatakan jarak yang kita mau, utk room 2, utk kitchen 1
 void Order(Player P);  
@@ -34,6 +33,7 @@ void GoDown(Player *P);
 void GoLeft(Player *P);
 void GoRight(Player *P);
 void TampilPeta(int room);
+void Input(Player *P);
 
 //Titipan Louis
 void tampilanAwal();
