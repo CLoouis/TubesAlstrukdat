@@ -14,6 +14,7 @@
 
 
 
+
 boolean IsReachable(Player P, int x, int y, int jarak);
 // Player P, x,y menyatakan koordinat tujuan, jarak menyatakan jarak yang kita mau, utk room 2, utk kitchen 1
 void Order(Player P);  

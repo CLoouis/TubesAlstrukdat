@@ -2,8 +2,8 @@
 #include <string.h>
 #include "../ADT/graph.h"
 #include "../ADT/boolean.h"
-#include "../ADT/mesinkar2.h"
 #include "../ADT/mesinkata2.h"
+#include "../ADT/mesinkar2.h"
 //#include "tipebentukan.h"
 
 // char peta[9][9];// peta adalah peta kitchen
@@ -746,9 +746,3 @@ void Input(Player *P){
         }
     }
 }
-
-
-
-
-
-
