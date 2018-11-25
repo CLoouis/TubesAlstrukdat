@@ -6,7 +6,7 @@
 
 void newsave(KataString Nama);
 
-boolean ceksave(KataString Nama);
+void ceksave(KataString Nama, boolean *mark);
 
 void Load(Player *P, Queue *AntrianLuar, ruang *ruangan, arrayC *arrayCust, DaftarO *DaftarOrder);
 

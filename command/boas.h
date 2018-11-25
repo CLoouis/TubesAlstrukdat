@@ -28,12 +28,12 @@ void Recipe();
 void NextTick(Player *P);
 void Credit();
 void AddQueue(Player P);
-void UpdatePeta();
+void UpdatePeta(Player P, ruang *ruangan, arrayC arrayCust);
 void GoUp(Player *P);
 void GoDown(Player *P);
 void GoLeft(Player *P);
 void GoRight(Player *P);
-void TampilPeta(int room);
+void TampilPeta(int room, ruang ruangan);
 void Input(Player *P);
 
 //Titipan Louis

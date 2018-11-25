@@ -21,7 +21,7 @@ void IgnoreBlank2()
 {
 	/* Kamus Lokal */
 	/* Algoritma */
-	while (((CC2 == ' ') || (CC2 == '\n')) && (CC2 != MARK2))
+	while (((CC2 == '\n')) && (CC2 != MARK2))
 	{
 		ADV2();
 	} /* CC2 != BLANK or CC2 = MARK2 */
@@ -65,7 +65,7 @@ void ADVKATA2()
 	else /* CC2 != MARK2 */
 	{
 		SalinKata2();
-		IgnoreBlank2();
+		// IgnoreBlank2();
 	}
 }
 
@@ -88,7 +88,7 @@ void SalinKata2()
 		{
 			break;
 		}
-		if ((CC2 == MARK2) || (CC2 == BLANK2) || (CC2 == '\n')) 
+		if ((CC2 == MARK2) || (CC2 == '\n')) 
 		{
 			CKata2.TabKata2[i+1] = '\0';
 			break;

@@ -14,14 +14,17 @@ void newsave(KataString Nama){
     FILE *fptr1, *fptr2; 
     char Namafile[1000];
     char c; 
-    snprintf(Namafile, sizeof(Namafile), "../File/Save/%s.txt", Nama);
+    snprintf(Namafile, sizeof(Namafile), "File/Save/%s.txt", Nama);
     fptr1 = fopen(Namafile, "w");
     if (fptr1 == NULL) {
         perror("fopen()");
     }
     else {
-        fptr2 = fopen("../File/Save/newsave.txt","r");
+        fptr2 = fopen("File/Save/newsave.txt","r");
         c = fgetc(fptr2); 
+        if (fptr2 == NULL) {
+            perror("fopen()");
+        }
         while (c != EOF) 
         { 
             fputc(c, fptr1); 
@@ -32,17 +35,20 @@ void newsave(KataString Nama){
     fclose(fptr1);
 }
 
-boolean ceksave(KataString Nama){
+void ceksave(KataString Nama, boolean *mark){
     FILE *fptr1, *fptr2; 
     char Namafile[1000];
     char c; 
-    snprintf(Namafile, sizeof(Namafile), "../File/Save/%s.txt", Nama);
+    snprintf(Namafile, sizeof(Namafile), "File/Save/%s.txt", Nama);
     fptr1 = fopen(Namafile, "r");
     if (fptr1 == NULL) {
-        return false;
+        *mark = false;
     }
     else {
-        fptr2 = fopen("../File/pitakar.txt","w");
+        fptr2 = fopen("File/pitakar.txt","w");
+        if (fptr2 == NULL) {
+            perror("fopen()");
+        }
         c = fgetc(fptr1); 
         while (c != EOF) 
         { 
@@ -50,7 +56,7 @@ boolean ceksave(KataString Nama){
             c = fgetc(fptr1); 
         }
         fclose(fptr2);
-        return true;
+        *mark = true;
     }
     fclose(fptr1);
 }
@@ -318,7 +324,16 @@ void Load (Player *P, Queue *AntrianLuar, ruang *ruangan, arrayC *arrayCust, Daf
                     }
                 }
                 strcpy(arrayCust(*arrayCust,i).order,CKata.TabKata);
-                arrayCust(*arrayCust,i).isi = true;
+                while (CC == ' '){    
+                    ADV();
+                }
+                ADVKATA();
+                if (strcmp(CKata.TabKata, "f") == 0){
+                    arrayCust(*arrayCust,i).isi = false;
+                }
+                else {
+                    arrayCust(*arrayCust,i).isi = true;
+                }
             }
         }
         else if (strcmp(CKata.TabKata, "Order") == 0){
@@ -399,7 +414,7 @@ void Save (Player P, Queue AntrianLuar, ruang ruangan, arrayC arrayCust, DaftarO
     FILE *fptr;
     // char str[] = P.Nama;
     char Namafile[1000];
-    snprintf(Namafile, sizeof(Namafile), "../File/Save/%s.txt", Name(P));
+    snprintf(Namafile, sizeof(Namafile), "File/Save/%s.txt", Name(P));
     // printf("%s", Namafile);
     fptr = fopen(Namafile, "w");
     if (fptr == NULL) {
@@ -455,7 +470,12 @@ void Save (Player P, Queue AntrianLuar, ruang ruangan, arrayC arrayCust, DaftarO
                 arrayCust(arrayCust,i).order[N] = '_';
             }
         }
-        fprintf(fptr, "%d %d %d %s\n", arrayCust(arrayCust,i).jumlah, arrayCust(arrayCust,i).patience, arrayCust(arrayCust,i).qpatience, arrayCust(arrayCust,i).order);
+        if (arrayCust(arrayCust,i).isi){
+            fprintf(fptr, "%d %d %d %s t\n", arrayCust(arrayCust,i).jumlah, arrayCust(arrayCust,i).patience, arrayCust(arrayCust,i).qpatience, arrayCust(arrayCust,i).order);
+        }
+        else {
+            fprintf(fptr, "%d %d %d %s f\n", arrayCust(arrayCust,i).jumlah, arrayCust(arrayCust,i).patience, arrayCust(arrayCust,i).qpatience, arrayCust(arrayCust,i).order);
+        }
     }
     fprintf(fptr, "\nOrder\n");
     for (i = 1; i <= 12; i++){

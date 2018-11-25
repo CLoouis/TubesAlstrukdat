@@ -4,7 +4,8 @@
 #include "../ADT/boolean.h"
 #include "../ADT/mesinkata2.h"
 #include "../ADT/mesinkar2.h"
-//#include "tipebentukan.h"
+#include "SaveLoad.h"
+// #include "tipebentukan.h"
 
 // char peta[9][9];// peta adalah peta kitchen
 // char peta2[9][9];//peta adalah peta ruang 
@@ -268,7 +269,7 @@ void Place(Player P){//Ubah c ke x
         }
     }   
     NextTick(&P);
-    UpdatePeta(P);
+    UpdatePeta(P,&ruangan, arrayCust);
 
 }
 
@@ -307,7 +308,7 @@ void Give(Player *P){
         }
     }
     NextTick(P);
-    UpdatePeta();
+    UpdatePeta(*P,&ruangan, arrayCust);
 }
 
 void CH(Player *P){
@@ -525,16 +526,17 @@ void NextTick(Player *P){
     }
 
     //Selesaikan permainan jika life 0, panggil credit
-    if(Life(*P) == 0){
+    if(Life(*P) <= 0){
         Credit();
+
     }
     if(((*P).time % 60) == 1){
         AddQueue(*P);
     }
-    UpdatePeta();
+    UpdatePeta(*P,&ruangan, arrayCust);
 }
 
-void TampilPeta(int room){
+void TampilPeta(int room, ruang ruangan){
     
     for (int i = 1; i<9; i++){
         for (int j = 1; j<9; j++){
@@ -544,7 +546,7 @@ void TampilPeta(int room){
     }
 }
 
-void UpdatePeta(Player P){
+void UpdatePeta(Player P, ruang *ruangan, arrayC arrayCust){
     int i,baris,kolom;
 
     for(i=1;i<=4;i++){ // i adalah nomor meja tiap ruangan
@@ -552,52 +554,52 @@ void UpdatePeta(Player P){
         kolom = DaftarMeja[i].Y;
         for(int j=1;j<=3;j++){ // j adalah nomor ruangan
             if(arrayCust(arrayCust,i +(j-1)*4).isi){ // Ubah kosong jadi terisi
-                if(Ruang(ruangan,j,baris-1,kolom) == 'X'){
-                    Ruang(ruangan,j,baris-1,kolom) = 'C'; 
+                if(Ruang(*ruangan,j,baris-1,kolom) == 'X'){
+                    Ruang(*ruangan,j,baris-1,kolom) = 'C'; 
                 }
-                if(Ruang(ruangan,j,baris+1,kolom) == 'X'){
-                    Ruang(ruangan,j,baris+1,kolom) = 'C'; 
+                if(Ruang(*ruangan,j,baris+1,kolom) == 'X'){
+                    Ruang(*ruangan,j,baris+1,kolom) = 'C'; 
                 }
-                if(Ruang(ruangan,j,baris,kolom+1) == 'X'){
-                    Ruang(ruangan,j,baris,kolom+1) = 'C'; 
+                if(Ruang(*ruangan,j,baris,kolom+1) == 'X'){
+                    Ruang(*ruangan,j,baris,kolom+1) = 'C'; 
                 }
-                if(Ruang(ruangan,j,baris,kolom-1) == 'X'){
-                    Ruang(ruangan,j,baris,kolom-1) = 'C'; 
+                if(Ruang(*ruangan,j,baris,kolom-1) == 'X'){
+                    Ruang(*ruangan,j,baris,kolom-1) = 'C'; 
                 }
                 if(arrayCust(arrayCust,(i +(j-1)*4)).jumlah == 2){ 
                     if(i == 2 || i == 4){ // 2 orang, posisi horizontal
-                        if(Ruang(ruangan, j, baris-1, kolom) != 'P'){
-                            Ruang(ruangan, j, baris-1, kolom) = '-';
+                        if(Ruang(*ruangan, j, baris-1, kolom) != 'P'){
+                            Ruang(*ruangan, j, baris-1, kolom) = '-';
                         }
-                        if(Ruang(ruangan, j, baris+1, kolom) != 'P'){
-                            Ruang(ruangan, j, baris+1, kolom) = '-';
+                        if(Ruang(*ruangan, j, baris+1, kolom) != 'P'){
+                            Ruang(*ruangan, j, baris+1, kolom) = '-';
                         }
                     }
                     else{// 2 orang, posisi vertikal
-                        if(Ruang(ruangan, j, baris, kolom-1) != 'P'){
-                            Ruang(ruangan, j, baris, kolom-1) = 'X';
+                        if(Ruang(*ruangan, j, baris, kolom-1) != 'P'){
+                            Ruang(*ruangan, j, baris, kolom-1) = 'X';
                         }
-                        if(Ruang(ruangan, j, baris, kolom+1) != 'P'){
-                            Ruang(ruangan, j, baris, kolom+1) = 'X';
+                        if(Ruang(*ruangan, j, baris, kolom+1) != 'P'){
+                            Ruang(*ruangan, j, baris, kolom+1) = 'X';
                         }
                     }
                 }
                 if(arrayCust(arrayCust,i +(j-1)*4).jumlah == 3){
-                    Ruang(ruangan, j, baris, kolom-1) = 'X';
+                    Ruang(*ruangan, j, baris, kolom-1) = 'X';
                 }
             }
             else if(!(arrayCust(arrayCust,i +(j-1)*4).isi)) { // Ubah isi jadi kosong
-                if(Ruang(ruangan,j,baris-1,kolom) == 'C'){
-                    Ruang(ruangan,j,baris-1,kolom) = 'X'; 
+                if(Ruang(*ruangan,j,baris-1,kolom) == 'C'){
+                    Ruang(*ruangan,j,baris-1,kolom) = 'X'; 
                 }
-                if(Ruang(ruangan,j,baris+1,kolom) == 'C'){
-                    Ruang(ruangan,j,baris+1,kolom) = 'X'; 
+                if(Ruang(*ruangan,j,baris+1,kolom) == 'C'){
+                    Ruang(*ruangan,j,baris+1,kolom) = 'X'; 
                 }
-                if(Ruang(ruangan,j,baris,kolom+1) == 'C'){
-                    Ruang(ruangan,j,baris,kolom+1) = 'X'; 
+                if(Ruang(*ruangan,j,baris,kolom+1) == 'C'){
+                    Ruang(*ruangan,j,baris,kolom+1) = 'X'; 
                 }
-                if(Ruang(ruangan,j,baris,kolom-1) == 'C'){
-                    Ruang(ruangan,j,baris,kolom-1) = 'X'; 
+                if(Ruang(*ruangan,j,baris,kolom-1) == 'C'){
+                    Ruang(*ruangan,j,baris,kolom-1) = 'X'; 
                 }
             }
         }
@@ -607,7 +609,7 @@ void UpdatePeta(Player P){
 
 void Credit(){
     printf("GAME ENDED\n");
-    printf("CREATED BY:");
+    printf("CREATED BY:\n");
     printf("Johanes Boas - 13517009\n");
     printf("Kevin Nathaniel - 13517072\n");
     printf("Timothy - 13517087\n");
@@ -620,10 +622,16 @@ void tampilanAwal(){
     printf("----------------------------------------------\n");
     printf("-----------ENGI'S KITCHEN EXPANSION-----------\n");
     printf("----------------------------------------------\n");
+    printf("Silahkan melakukan perintah-perintah berikut: \n");
+    printf("1. NEW GAME \n");
+    printf("2. START GAME \n");
+    printf("3. LOAD GAME \n");
+    printf("4. EXIT\n");
 }
 
 void Input(Player *P){
     int i;
+    boolean Found;
     i = 0;
     STARTKATA2();
     if(CKata2.Length2 == 2){
@@ -682,7 +690,7 @@ void Input(Player *P){
             if(CKata2.TabKata2[1] == 'A'){
                 if(CKata2.TabKata2[2] == 'V'){
                     if(CKata2.TabKata2[3] == 'E'){
-                        printf("Save\n" );
+                        Save(*P, AntrianLuar, ruangan, arrayCust, DaftarOrder);
                     }
                 }
             }
@@ -691,7 +699,17 @@ void Input(Player *P){
             if(CKata2.TabKata2[1] == 'O'){
                 if(CKata2.TabKata2[2] == 'A'){
                     if(CKata2.TabKata2[3] == 'D'){
-                        printf("Load\n");
+                        ADVKATA2();
+                        strcpy(Name(*P), CKata2.TabKata2);
+                        ceksave(Name(*P), &Found);
+                        if (Found){
+                            Load(P, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+                            printf("Save %s berhasil diload, game diteruskan dengan state yang baru.\n", Name(*P));
+                        }
+                        else {
+                            printf("Nama tidak ditemukan, game diteruskan dengan state sebelumnya.\n");
+                        }
+                        
                     }
                 }
             }
@@ -700,7 +718,7 @@ void Input(Player *P){
             if(CKata2.TabKata2[1] == 'X'){
                 if(CKata2.TabKata2[2] == 'I'){
                     if(CKata2.TabKata2[3] == 'T'){
-                        printf("Exit\n");
+                        Credit();
                     }
                 }
             }

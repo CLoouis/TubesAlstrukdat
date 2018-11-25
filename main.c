@@ -11,6 +11,8 @@
 #include "ADT/stackt.h"
 #include "ADT/mesinkar.h"
 #include "ADT/mesinkata.h"
+#include "ADT/mesinkar2.h"
+#include "ADT/mesinkata2.h"
 #include "ADT/tipebentukan.h"
 #include "ADT/queue.h"
 #include "ADT/graph.h"
@@ -30,7 +32,7 @@ int main(){
     char name[10];
     int IdxQueue, IdxOrder, IdxFoodStack, IdxHand; // Elemen queue antrian diluar, elemen order, elemen food stack, elemen hand
     TabInt User;
-
+    boolean Start, Found;
     //MakeEmpty(&User);
 
     //Create pemain
@@ -264,72 +266,123 @@ int main(){
     //-----------------------------------------------------MAIN PROGRAM-----------------------------------------------------------------------
     tampilanAwal();
     inputtest = ' ';
-    while(inputtest != 'q'){
-        printf("\n");
-        printf("Name : %s\n", pemain.name);
-        printf("Money : %d\n\n", pemain.money);
-        printf("Life : %d\n\n", pemain.life);
-        printf("Time : %d\n\n", pemain.time);
-        printf("Waiting Cust : \n");
-        for(IdxQueue = Head(AntrianLuar); IdxQueue <= Tail(AntrianLuar); IdxQueue++){
-            printf("%d\n", AntrianLuar.T[IdxQueue].jumlah);
+    Start = false;
+    STARTKATA2();
+    Life(pemain) = 1000;
+    while((strcmp(CKata2.TabKata2, "EXIT") != 0) && !(Life(pemain) <= 0)){
+        if (strcmp(CKata2.TabKata2, "NEW GAME") == 0){
+            printf("Masukan nama Anda: ");
+            while (CC == ' ' || CC == '\n'){    
+                ADV();
+            }
+            ADVKATA2();
+            strcpy(Name(pemain), CKata2.TabKata2);
+            ceksave(Name(pemain), &Found);
+            if (Found){
+                printf("Nama ditemukan, silahkan melakukan load game.\n");
+                Start = true;
+            }
+            else {
+                newsave(Name(pemain));
+                ceksave(Name(pemain), &Found);
+                Load(&pemain, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+                Save(pemain, AntrianLuar, ruangan, arrayCust, DaftarOrder);
+                Load(&pemain, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+                Start = true;
+                printf("Save %s berhasil dibuat, silahkan memulai game.\n", Name(pemain));
+            }
+            printf("Silahkan melanjutkan melakukan perintah-perintah berikut: \n");
+            printf("1. NEW GAME \n");
+            printf("2. START GAME \n");
+            printf("3. LOAD GAME \n");
+            printf("4. EXIT\n");
+            ADVKATA2();
         }
-        printf("\n");
-        printf("Order : \n");
-        for(IdxOrder = 1; IdxOrder <= 12; IdxOrder++){
-            if((strcmp(DaftarOrder(DaftarOrder, IdxOrder), "*") != 0) && (arrayCust(arrayCust, IdxOrder).isi == true)){
-                printf("%s, %c\n", DaftarOrder(DaftarOrder, IdxOrder), NamaMeja[IdxOrder]);
+        else if (strcmp(CKata2.TabKata2, "LOAD GAME") == 0){
+            printf("Masukan nama Anda: ");
+            while (CC2 == ' ' || CC2 == '\n'){    
+                ADV2();
+            }
+            ADVKATA2();
+            strcpy(Name(pemain), CKata2.TabKata2);
+            ceksave(Name(pemain), &Found);
+            if (Found){
+                Load(&pemain, &AntrianLuar, &ruangan, &arrayCust, &DaftarOrder);
+                printf("Save %s berhasil diload, silahkan memulai game.\n", Name(pemain));
+                Start = true;
+            }
+            else {
+                printf("Nama tidak ditemukan, silahkan melakukan new game.\n");
+            }
+            printf("Silahkan melanjutkan melakukan perintah-perintah berikut: \n");
+            printf("1. NEW GAME \n");
+            printf("2. START GAME \n");
+            printf("3. LOAD GAME \n");
+            printf("4. EXIT\n");
+            ADVKATA2();
+        }
+        else if (strcmp(CKata2.TabKata2, "START GAME") == 0){
+            if (Start){
+                while((strcmp(CKata2.TabKata2, "EXIT") != 0) && !(Life(pemain) <= 0)){
+                    printf("\n");
+                    printf("Name : %s\n", pemain.name);
+                    printf("Money : %d\n\n", pemain.money);
+                    printf("Life : %d\n\n", pemain.life);
+                    printf("Time : %d\n\n", pemain.time);
+                    printf("Waiting Cust : \n");
+                    for(IdxQueue = Head(AntrianLuar); IdxQueue <= Tail(AntrianLuar); IdxQueue++){
+                        printf("%d\n", AntrianLuar.T[IdxQueue].jumlah);
+                    }
+                    printf("\n");
+                    printf("Order : \n");
+                    for(IdxOrder = 1; IdxOrder <= 12; IdxOrder++){
+                        if((strcmp(DaftarOrder(DaftarOrder, IdxOrder), "*") != 0) && (arrayCust(arrayCust, IdxOrder).isi == true)){
+                            printf("%s, %c\n", DaftarOrder(DaftarOrder, IdxOrder), NamaMeja[IdxOrder]);
+                        }
+                    }
+                    printf("\n");
+                    printf("Food Stack : \n");
+                    for(IdxFoodStack = 1; IdxFoodStack <= Top(FoodStack(pemain)); IdxFoodStack++){
+                        printf("%s\n", FoodStack(pemain).TI[IdxFoodStack]);
+                    }
+                    printf("\n");
+                    printf("Hand :\n");
+                    for(IdxHand = 1; IdxHand <= Top(Hand(pemain)); IdxHand++){
+                        printf("%s\n", Hand(pemain).TI[IdxHand]);
+                    }
+                    printf("\n");
+                    printf("Map :\n");
+                    TampilPeta(pemain.room, ruangan);
+                    Input(&pemain);
+                }
+                if ((strcmp(CKata2.TabKata2, "EXIT") != 0)  && !(Life(pemain) <= 0)){
+                    printf("Silahkan melanjutkan melakukan perintah-perintah berikut: \n");
+                    printf("1. NEW GAME \n");
+                    printf("2. START GAME \n");
+                    printf("3. LOAD GAME \n");
+                    printf("4. EXIT\n");
+                    ADVKATA2();
+                }
+            }
+            else {
+                printf("Lakukan \"NEW GAME\" atau \"LOAD GAME\" terlebih dahulu\n");
+                printf("Silahkan melanjutkan melakukan perintah-perintah berikut: \n");
+                printf("1. NEW GAME \n");
+                printf("2. START GAME \n");
+                printf("3. LOAD GAME \n");
+                printf("4. EXIT\n");
+                ADVKATA2();
             }
         }
-        printf("\n");
-        printf("Food Stack : \n");
-        for(IdxFoodStack = 1; IdxFoodStack <= Top(FoodStack(pemain)); IdxFoodStack++){
-            printf("%s\n", FoodStack(pemain).TI[IdxFoodStack]);
+        else {
+            printf("Masukan salah, silahkan input kembali.\n");
+            printf("Silahkan melanjutkan melakukan perintah-perintah berikut: \n");
+            printf("1. NEW GAME \n");
+            printf("2. START GAME \n");
+            printf("3. LOAD GAME \n");
+            printf("4. EXIT\n");
+            ADVKATA2();
         }
-        printf("\n");
-        printf("Hand :\n");
-        for(IdxHand = 1; IdxHand <= Top(Hand(pemain)); IdxHand++){
-            printf("%s\n", Hand(pemain).TI[IdxHand]);
-        }
-
-        TampilPeta(pemain.room);
-        Input(&pemain);
-        // scanf("%c",&inputtest);
-        // scanf("%c",&inputtest);
-        // if(inputtest == 'd'){
-        //     GoRight(&pemain);
-        // }
-        // else if(inputtest == 'w'){
-        //     GoUp(&pemain);
-        // }
-        // else if(inputtest == 'a'){
-        //     GoLeft(&pemain);
-        // }
-        // else if(inputtest == 's'){
-        //     GoDown(&pemain);
-        //     printf("%d\n", Id(Succ(Trail(P8))).X);
-        // }
-        // else if(inputtest == 'o'){
-        //     Order(pemain);
-        // }
-        // else if(inputtest == 'p'){
-        //     Place(pemain);
-        // }
-        // else if(inputtest == 't'){
-        //     Take(&pemain);
-        // }
-        // else if(inputtest == 'z'){
-        //     Put(&pemain);
-        // }
-        // else if(inputtest == 'g'){
-        //     Give(&pemain);
-        // }
-        // else if(inputtest =='x'){
-        //     CH(&pemain);
-        // }
-        // else if(inputtest =='c'){
-        //     CT(&pemain);
-        // }
     }
 
 }

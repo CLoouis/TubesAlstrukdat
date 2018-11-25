@@ -565,7 +565,7 @@ void UpdatePeta(Player P){
 
 void Credit(){
     printf("GAME ENDED\n");
-    printf("CREATED BY:");
+    printf("CREATED BY:\n");
     printf("Johanes Boas - 13517009\n");
     printf("Kevin Nathaniel - 13517072\n");
     printf("Timothy - 13517087\n");
