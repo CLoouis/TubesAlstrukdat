@@ -208,8 +208,8 @@ int main(){
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
 
     
-    Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
-    adrNode P1,P2,P3,P4,P5,P6,P7,P8;
+    // Pintu Pintu1,Pintu2,Pintu3,Pintu4,Pintu5,Pintu6,Pintu7,Pintu8;
+    // adrNode P1,P2,P3,P4,P5,P6,P7,P8;
 
     Pintu1.X = 1;
     Pintu1.Y = 5;
@@ -306,6 +306,7 @@ int main(){
         }
         else if(inputtest == 's'){
             GoDown(&pemain);
+            printf("%d\n", Id(Succ(Trail(P8))).X);
         }
         else if(inputtest == 'o'){
             Order(pemain);
@@ -331,5 +332,3 @@ int main(){
     }
 
 }
-
-
