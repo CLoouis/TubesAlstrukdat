@@ -26,6 +26,7 @@ int main(){
     int input1;
     int indexUser;
     char name[10];
+    int IdxQueue, IdxOrder, IdxFoodStack, IdxHand; // Elemen queue antrian diluar, elemen order, elemen food stack, elemen hand
     TabInt User;
 
     //MakeEmpty(&User);
@@ -51,6 +52,46 @@ int main(){
     DaftarMeja[3].Y = 2;
     DaftarMeja[4].X = 7;
     DaftarMeja[4].Y = 7;
+
+    //Daftar meja
+    arrayCust(arrayCust,1).jumlah = 4;
+    arrayCust(arrayCust,2).jumlah = 2;
+    arrayCust(arrayCust,3).jumlah = 4;
+    arrayCust(arrayCust,4).jumlah = 2;
+    arrayCust(arrayCust,5).jumlah = 2;
+    arrayCust(arrayCust,6).jumlah = 2;
+    arrayCust(arrayCust,7).jumlah = 4;
+    arrayCust(arrayCust,8).jumlah = 2;
+    arrayCust(arrayCust,9).jumlah = 2;
+    arrayCust(arrayCust,10).jumlah = 2;
+    arrayCust(arrayCust,11).jumlah = 4;
+    arrayCust(arrayCust,12).jumlah = 2;
+    arrayCust(arrayCust,1).isi = false;
+    arrayCust(arrayCust,2).isi = false;
+    arrayCust(arrayCust,3).isi = false;
+    arrayCust(arrayCust,4).isi = false;
+    arrayCust(arrayCust,5).isi = false;
+    arrayCust(arrayCust,6).isi = false;
+    arrayCust(arrayCust,7).isi = false;
+    arrayCust(arrayCust,8).isi = false;
+    arrayCust(arrayCust,9).isi = false;
+    arrayCust(arrayCust,10).isi = false;
+    arrayCust(arrayCust,11).isi = false;
+    arrayCust(arrayCust,12).isi = false;
+
+    //Kursi meja
+    KursiMeja[1] = 4;
+    KursiMeja[2] = 2;
+    KursiMeja[3] = 4;
+    KursiMeja[4] = 2;
+    KursiMeja[5] = 2;
+    KursiMeja[6] = 2;
+    KursiMeja[7] = 4;
+    KursiMeja[8] = 2;
+    KursiMeja[9] = 2;
+    KursiMeja[10] = 2;
+    KursiMeja[11] = 4;
+    KursiMeja[12] = 2;
 
     //Inisialisasi Peta
     for (int i = 1; i<9; i++){
@@ -111,6 +152,7 @@ int main(){
     Ruang(ruangan,3,8,2) = 'X';
 
     Ruang(ruangan,4,1,1) = 'M';
+    Ruang(ruangan,4,1,8) = 'T';
     Ruang(ruangan,4,2,1) = 'M';
     Ruang(ruangan,4,3,1) = 'M';
     Ruang(ruangan,4,4,1) = 'M';
@@ -127,6 +169,20 @@ int main(){
     Ruang(ruangan,4,8,7) = 'M';
     Ruang(ruangan,4,8,8) = 'M';
 
+    NamaMeja[1] = '1';
+    NamaMeja[2] = '2';
+    NamaMeja[3] = '3';
+    NamaMeja[4] = '4';
+    NamaMeja[5] = '5';
+    NamaMeja[6] = '6';
+    NamaMeja[7] = '7';
+    NamaMeja[8] = '8';
+    NamaMeja[9] = '9';
+    NamaMeja[10] = 'A';
+    NamaMeja[11] = 'B';
+    NamaMeja[12] = 'D';
+
+
     Ruang(ruangan,pemain.room,pemain.Posisi.X,pemain.Posisi.Y) = 'P';
     //Daftar resep
     strcpy(DaftarResep[1],"Banana Split");
@@ -138,7 +194,13 @@ int main(){
     strcpy(DaftarResep[7],"Spaghetti Bolognese");
     strcpy(DaftarResep[8],"Spaghetti Carbonara");
 
-    //Pohon resep
+    // Daftar Order
+    for(IdxOrder = 1; IdxOrder <= 12; IdxOrder++){
+            strcpy(DaftarOrder(DaftarOrder, IdxOrder), "*");
+    }
+
+
+    // Pohon resep
     MakeTree("Piring",Tree("Sendok",Tree("Es Krim",Tree("Pisang",Tree("Banana Split",Nil,Nil),Nil),Tree("Stroberi",Tree("Sundae",Nil,Nil),Nil)),Tree("Nasi",Tree("Telur",Tree("Nasi Telur Dadar",Nil,Nil),Nil),Tree("Ayam Goreng",Tree("Nasi Ayam Goreng",Nil,Nil),Nil)))
                      ,Tree("Garpu",Tree("Roti",Tree("Patty",Tree("Burger",Nil,Nil),Nil),Tree("Sosis",Tree("Hot Dog",Nil,Nil),Nil)),Tree("Spaghetti",Tree("Bolognese",Tree("Keju",Tree("Spaghetti Bolognese",Nil,Nil),Nil),Nil),Tree("Carbonara",Tree("Spaghetti Carbonara",Nil,Nil),Nil))),&Resep);
 
@@ -353,6 +415,31 @@ int main(){
     inputtest = ' ';
     while(inputtest != 'q'){
         printf("\n");
+        printf("Name : %s\n", pemain.name);
+        printf("Money : %d\n\n", pemain.money);
+        printf("Life : %d\n\n", pemain.life);
+        printf("Time : %d\n\n", pemain.time);
+        printf("Waiting Cust : \n");
+        for(IdxQueue = Head(AntrianLuar); IdxQueue <= Tail(AntrianLuar); IdxQueue++){
+            printf("%d\n", AntrianLuar.T[IdxQueue].jumlah);
+        }
+        printf("\n");
+        printf("Order : \n");
+        for(IdxOrder = 1; IdxOrder <= 12; IdxOrder++){
+            if((strcmp(DaftarOrder(DaftarOrder, IdxOrder), "*") != 0) && (arrayCust(arrayCust, IdxOrder).isi == true)){
+                printf("%s, %c\n", DaftarOrder(DaftarOrder, IdxOrder), NamaMeja[IdxOrder]);
+            }
+        }
+        printf("\n");
+        printf("Food Stack : \n");
+        for(IdxFoodStack = 1; IdxFoodStack <= Top(FoodStack(pemain)); IdxFoodStack++){
+            printf("%s\n", FoodStack(pemain).TI[IdxFoodStack]);
+        }
+        printf("\n");
+        printf("Hand :\n");
+        for(IdxHand = 1; IdxHand <= Top(Hand(pemain)); IdxHand++){
+            printf("%s\n", Hand(pemain).TI[IdxHand]);
+        }
         TampilPeta(pemain.room);
         scanf("%c",&inputtest);
         if(inputtest == 'd'){
@@ -373,21 +460,30 @@ int main(){
         }
         else if(inputtest == 'o'){
             Order(pemain);
-            printf("%s\n",DaftarOrder[1]);
+            printf("%s\n",DaftarOrder(DaftarOrder,1));
         }
         else if(inputtest == 'p'){
             Place(pemain);
-            printf("%s\n",arrayCust[1].order);
-            printf("%d\n",arrayCust[1].jumlah);
-            printf("%d\n",arrayCust[1].patience);
-            printf("%d\n",arrayCust[1].qpatience);
+            printf("%s\n",arrayCust(arrayCust,1).order);
+            printf("%d\n",arrayCust(arrayCust,1).jumlah);
+            printf("%d\n",arrayCust(arrayCust,1).patience);
+            printf("%d\n",arrayCust(arrayCust,1).qpatience);
         }
         else if(inputtest == 't'){
             Take(&pemain);
             printf("%s\n",InfoTop(Hand(pemain)));
         }
-        else if(inputtest == 'l'){
-            AddQueue(pemain);
+        else if(inputtest == 'z'){
+            Put(&pemain);
+        }
+        else if(inputtest == 'g'){
+            Give(&pemain);
+        }
+        else if(inputtest =='x'){
+            CH(&pemain);
+        }
+        else if(inputtest =='c'){
+            CT(&pemain);
         }
     }
 
