@@ -1,22 +1,22 @@
-Nama
-Tim
-
+Name
+- 
+ 
 Position
 5,5
 
 Room
 1
 
-Money
-500
-
-Life
-2
-
-Time
-0
-
-Room1
+Money 
+500 
+ 
+Life 
+2 
+ 
+Time 
+0 
+ 
+Room1 
 - X - - - - - - 
 X 1 X - - X 2 X 
 - X - - - - - - 
@@ -25,8 +25,8 @@ X 1 X - - X 2 X
 - X - - - - - - 
 X 3 X - - X 4 X 
 - X - - - - - - 
-
-Room2
+ 
+Room2 
 - X - - - - - - 
 - 5 - - - X 6 X 
 - X - - - - - - 
@@ -35,8 +35,8 @@ Room2
 - X - - - - - - 
 X 7 X - - X 8 X 
 - X - - - - - - 
-
-Room3
+ 
+Room3 
 - X - - - - - - 
 - 9 - - - X A X 
 - X - - - - - - 
@@ -44,9 +44,9 @@ Room3
 - - - - - - - - 
 - X - - - - - - 
 X B X - - X D X 
-- X - - - - - - 
+- X - - - - - -  
 
-Kitchen
+Kitchen 
 M - - - - - - T 
 M - - - - - - - 
 M - - - - - - - 
@@ -61,7 +61,7 @@ AntrianLuar
 4 60 30 Nasi_Ayam_Goreng
 
 Customer
-0 0 0 - f
+0 0 0 - f 
 0 0 0 - f
 0 0 0 - f
 0 0 0 - f

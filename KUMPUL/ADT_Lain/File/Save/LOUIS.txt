@@ -1,8 +1,8 @@
 Nama
-Tim
+LOUIS
 
 Position
-5,5
+3,3
 
 Room
 1
@@ -14,14 +14,14 @@ Life
 2
 
 Time
-0
+59
 
 Room1
-- X - - - - - - 
-X 1 X - - X 2 X 
-- X - - - - - - 
+- C - - - - - - 
+C 1 C - - X 2 X 
+- C P - - - - - 
 - - - - - - - - 
-- - - - P - - - 
+- - - - - - - - 
 - X - - - - - - 
 X 3 X - - X 4 X 
 - X - - - - - - 
@@ -61,7 +61,7 @@ AntrianLuar
 4 60 30 Nasi_Ayam_Goreng
 
 Customer
-0 0 0 - f
+4 3 26 Nasi_Ayam_Goreng t
 0 0 0 - f
 0 0 0 - f
 0 0 0 - f
@@ -75,7 +75,7 @@ Customer
 0 0 0 - f
 
 Order
--
+Nasi_Ayam_Goreng
 -
 -
 -
@@ -89,7 +89,8 @@ Order
 -
 
 FoodStack
-0
+1
+Nasi_Ayam_Goreng
 
 Hand
 0

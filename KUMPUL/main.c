@@ -1,24 +1,21 @@
-//gcc -o main main.c command/boas.c command/SaveLoad.c ADT/point.c ADT/stackt.c ADT/mesinkar.c ADT/mesinkata.c ADT/queue.c ADT/listrek.c ADT/bintree.c ADT/graph.c ADT/mesinkata2.c ADT/mesinkar2.c -lm
+//gcc -o main main.c Program_Utama/boas.c ADT_Lain/SaveLoad.c ADT_Point/point.c ADT_Stack/stackt.c ADT_MesinKarakter_MesinKata/mesinkar.c ADT_MesinKarakter_MesinKata/mesinkata.c ADT_MesinKarakter_MesinKata/mesinkar2.c ADT_MesinKarakter_MesinKata/mesinkata2.c ADT_Queue/queue.c ADT_Graf/graph.c ADT_Jam/jam.c ADT_Graf/listrek.c ADT_BinaryTree/bintree.c
 
 #include <stdio.h>
-#include "ADT/boolean.h"
-#include "command/boas.h"
-#include "command/SaveLoad.h"
-//#include "ADT/array.h"
-//#include "ADT/matriks.h"
-// #include "command/commandlouis.h"
-#include "ADT/point.h"
-#include "ADT/stackt.h"
-#include "ADT/mesinkar.h"
-#include "ADT/mesinkata.h"
-#include "ADT/mesinkar2.h"
-#include "ADT/mesinkata2.h"
-#include "ADT/tipebentukan.h"
-#include "ADT/queue.h"
-#include "ADT/graph.h"
-#include "ADT/jam.h"
-#include "ADT/listrek.h"
-#include "ADT/bintree.h"
+#include "ADT_Lain/boolean.h"
+#include "Program_Utama/boas.h"
+#include "ADT_Lain/SaveLoad.h"
+#include "ADT_Point/point.h"
+#include "ADT_Stack/stackt.h"
+#include "ADT_MesinKarakter_MesinKata/mesinkar.h"
+#include "ADT_MesinKarakter_MesinKata/mesinkata.h"
+#include "ADT_MesinKarakter_MesinKata/mesinkar2.h"
+#include "ADT_MesinKarakter_MesinKata/mesinkata2.h"
+#include "ADT_Lain/tipebentukan.h"
+#include "ADT_Queue/queue.h"
+#include "ADT_Graf/graph.h"
+#include "ADT_Jam/jam.h"
+#include "ADT_Graf/listrek.h"
+#include "ADT_BinaryTree/bintree.h"
 #include <string.h>
 
 int main(){

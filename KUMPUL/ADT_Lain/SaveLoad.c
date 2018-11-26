@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <string.h>
-#include "../ADT/tipebentukan.h"
-#include "../ADT/mesinkata.h"
-#include "../ADT/mesinkar.h"
-#include "../ADT/boolean.h"
-#include "../ADT/stackt.h"
-#include "../ADT/queue.h"
+#include "tipebentukan.h"
+#include "../ADT_MesinKarakter_MesinKata/mesinkata.h"
+#include "../ADT_MesinKarakter_MesinKata/mesinkar.h"
+#include "boolean.h"
+#include "../ADT_Stack/stackt.h"
+#include "../ADT_Queue/queue.h"
 #include "SaveLoad.h"
 
 
